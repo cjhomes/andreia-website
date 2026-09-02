@@ -1,6 +1,14 @@
 name = "andreia-da-costa"
+main = "src/index.js"
 compatibility_date = "2026-08-01"
 
 [assets]
 directory = "./site"
+binding = "ASSETS"
+run_worker_first = true
 not_found_handling = "404-page"
+
+# Speicher für die Inhalte, die Andreia über die Eingabemaske pflegt.
+[[kv_namespaces]]
+binding = "INHALTE"
+id = "5a2b3ab362264c92a9224bfd8dc66277"
