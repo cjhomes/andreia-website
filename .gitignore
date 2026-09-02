@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+_scratch/
+.DS_Store
+node_modules/
+.wrangler/
