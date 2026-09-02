@@ -177,6 +177,33 @@
   .ratingline .g{letter-spacing:.12em;color:var(--aussen);}
   .ratingline a{color:var(--ink-soft);text-underline-offset:3px;}
 
+  /* Pakete */
+  .pakete{list-style:none;padding:0;margin:44px 0 0;}
+  .pakete li{
+    display:grid;grid-template-columns:262px 1fr 110px;
+    gap:6px 28px;align-items:baseline;
+    padding:24px 0;border-top:1px solid var(--line);
+  }
+  .pakete li:last-child{border-bottom:1px solid var(--line);}
+  .pakete .was{
+    grid-column:1;font-family:"Newsreader",Georgia,serif;font-size:1.35rem;
+    font-weight:300;line-height:1.2;
+  }
+  .pakete .umfang{grid-column:1;font-size:.9rem;color:var(--innen);letter-spacing:.02em;}
+  .pakete .desc{grid-column:2;grid-row:1 / span 2;font-size:.95rem;color:var(--ink-soft);}
+  .pakete .preis{
+    grid-column:3;grid-row:1 / span 2;text-align:right;
+    font-family:"Newsreader",Georgia,serif;font-size:1.25rem;color:var(--innen);
+    font-variant-numeric:tabular-nums;white-space:nowrap;
+  }
+  @media (max-width:820px){
+    .pakete li{grid-template-columns:1fr auto;}
+    .pakete .was{grid-column:1;}
+    .pakete .umfang{grid-column:1;}
+    .pakete .desc{grid-column:1 / -1;grid-row:auto;margin-top:8px;}
+    .pakete .preis{grid-column:2;grid-row:1 / span 2;font-size:1.15rem;}
+  }
+
   /* Retreat-Termine */
   .dates{list-style:none;padding:0;margin:44px 0 0;}
   .dates li{

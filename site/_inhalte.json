@@ -10,6 +10,39 @@
     "finanzcoaching_dauer": "90 Minuten",
     "_status": "Beispielwerte — von Andreia zu bestätigen"
   },
+  "pakete": [
+    {
+      "name": "Erstgespräch",
+      "umfang": "30 Minuten · telefonisch oder online",
+      "text": "Wir lernen uns kennen, du erzählst mir, worum es geht, und wir schauen gemeinsam, was du brauchst.",
+      "preis": "kostenlos"
+    },
+    {
+      "name": "Coaching mit Andreia",
+      "umfang": "3 × 45 Minuten",
+      "text": "Ein kurzer Einstieg für alle, die erst einmal spüren möchten, wie sich die Arbeit anfühlt.",
+      "preis": "199 €"
+    },
+    {
+      "name": "Innere Klarheit",
+      "umfang": "4 × 60 Minuten",
+      "text": "In diesen 4 Stunden geht es nicht um Konzepte oder Techniken. Es geht darum, dass du wieder bei dir ankommst.",
+      "preis": "320 €"
+    },
+    {
+      "name": "Reflexion und Entwicklung",
+      "umfang": "8 × 60 Minuten",
+      "text": "Hier wird es tiefer und klarer zugleich. Wir schauen gemeinsam auf das, was dich innerlich bewegt, blockiert oder antreibt.",
+      "preis": "640 €"
+    },
+    {
+      "name": "Selbstbestimmte Ausrichtung",
+      "umfang": "16 × 60 Minuten",
+      "text": "Das ist kein Optimierungsprozess. Es ist ein Zurückkommen zu dir selbst. Über die Zeit entsteht ein Raum, in dem du alte Muster erkennst, dich davon löst und wieder Kontakt zu dem bekommst, was wirklich zu dir gehört.",
+      "preis": "1.200 €"
+    }
+  ],
+  "pakete_hinweis": "Alle Pakete sind ab dem Kauf zwölf Monate lang einlösbar. Die Termine liegen so, wie es für dich passt.",
   "retreats": [
     {
       "monat": "Mai 2027",

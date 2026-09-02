@@ -79,6 +79,17 @@ class ListenSetzer {
           + `</li>`;
       }).join(''), { html: true });
     }
+    if (art === 'pakete' && Array.isArray(this.daten.pakete)) {
+      el.setInnerContent(this.daten.pakete.map((p) => {
+        const preis = p.preis ? `<span class="preis">${esc(p.preis)}</span>` : '';
+        return `<li>`
+          + `<span class="was">${esc(p.name)}</span>`
+          + `<span class="umfang">${esc(p.umfang)}</span>`
+          + `<span class="desc">${esc(p.text)}</span>`
+          + preis
+          + `</li>`;
+      }).join(''), { html: true });
+    }
     if (art === 'stimmen' && Array.isArray(this.daten?.stimmen?.klein)) {
       el.setInnerContent(this.daten.stimmen.klein.map((q) => `<div class="quote">`
         + `<p>„${esc(q.zitat)}“</p><cite>${esc(q.name)}</cite></div>`).join(''), { html: true });
@@ -171,9 +182,17 @@ function pruefen(eingabe) {
   const felder = [
     ...Object.values(p), ...Object.values(k),
     s.bewertung, s.anzahl, s.google_link, s?.gross?.zitat, s?.gross?.name,
-    eingabe?.impressum?.umsatzsteuer,
+    eingabe?.impressum?.umsatzsteuer, eingabe.pakete_hinweis,
   ].filter((v) => v !== undefined);
   if (!felder.every(sauber)) return { fehler: 'Ein Feld ist leer oder zu lang.' };
+
+  const pakete = Array.isArray(eingabe.pakete) ? eingabe.pakete : [];
+  if (pakete.length > 10) return { fehler: 'Höchstens zehn Pakete.' };
+  for (const k of pakete) {
+    if (![k.name, k.umfang, k.text].every(sauber) || (k.preis && !sauber(k.preis))) {
+      return { fehler: 'Ein Paket-Feld ist leer oder zu lang.' };
+    }
+  }
 
   const retreats = Array.isArray(eingabe.retreats) ? eingabe.retreats : [];
   if (retreats.length > 12) return { fehler: 'Höchstens zwölf Retreats.' };

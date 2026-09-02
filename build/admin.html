@@ -130,6 +130,14 @@
     </section>
 
     <section class="karte">
+      <h2>Pakete</h2>
+      <p class="hinweis">Die Pakete, die unter „Was so ein Weg kostet" auf der Startseite stehen.</p>
+      <div id="pakete"></div>
+      <button class="btn stil" id="paket_neu" type="button">+ Paket hinzufügen</button>
+      <div class="feld" style="margin-top:18px"><label for="pk_hinweis">Zeile unter den Paketen</label><input id="pk_hinweis"></div>
+    </section>
+
+    <section class="karte">
       <h2>Retreats</h2>
       <p class="hinweis">Die Reihenfolge hier ist die Reihenfolge auf der Seite.</p>
       <div id="retreats"></div>
@@ -192,6 +200,7 @@
     ['p_hnc', 'preise.hnc'], ['p_hnc_d', 'preise.hnc_dauer'],
     ['p_finanz', 'preise.finanzcoaching'], ['p_finanz_d', 'preise.finanzcoaching_dauer'],
     ['p_retreat', 'preise.retreat_ab'],
+    ['pk_hinweis', 'pakete_hinweis'],
     ['s_zitat', 'stimmen.gross.zitat'], ['s_name', 'stimmen.gross.name'],
     ['s_bewertung', 'stimmen.bewertung'], ['s_anzahl', 'stimmen.anzahl'],
     ['s_link', 'stimmen.google_link'],
@@ -249,6 +258,21 @@
     return el;
   }
 
+  function zeilePaket(p, i) {
+    const el = document.createElement('div');
+    el.className = 'eintrag';
+    el.innerHTML = `
+      <button class="weg" type="button" title="Entfernen" data-wegp="${i}">×</button>
+      <div class="zwei">
+        <div class="feld"><label>Name</label><input data-p="${i}" data-f="name"></div>
+        <div class="feld"><label>Umfang</label><input data-p="${i}" data-f="umfang"></div>
+      </div>
+      <div class="feld"><label>Beschreibung</label><textarea data-p="${i}" data-f="text"></textarea></div>
+      <div class="feld"><label>Preis</label><input data-p="${i}" data-f="preis"></div>`;
+    el.querySelectorAll('[data-f]').forEach((f) => { f.value = p[f.dataset.f] || ''; });
+    return el;
+  }
+
   function zeileStimme(q, i) {
     const el = document.createElement('div');
     el.className = 'eintrag';
@@ -261,12 +285,24 @@
   }
 
   function listenZeichnen() {
+    const p = $('pakete'); p.innerHTML = '';
+    (daten.pakete || []).forEach((x, i) => p.appendChild(zeilePaket(x, i)));
     const r = $('retreats'); r.innerHTML = '';
     (daten.retreats || []).forEach((x, i) => r.appendChild(zeileRetreat(x, i)));
     const s = $('stimmen'); s.innerHTML = '';
     ((daten.stimmen || {}).klein || []).forEach((x, i) => s.appendChild(zeileStimme(x, i)));
   }
 
+  $('pakete').addEventListener('click', (e) => {
+    const i = e.target.dataset.wegp;
+    if (i === undefined) return;
+    einsammeln(); daten.pakete.splice(Number(i), 1); listenZeichnen();
+  });
+  $('paket_neu').addEventListener('click', () => {
+    einsammeln();
+    (daten.pakete = daten.pakete || []).push({ name: '', umfang: '', text: '', preis: '' });
+    listenZeichnen();
+  });
   $('retreats').addEventListener('click', (e) => {
     const i = e.target.dataset.weg;
     if (i === undefined) return;
@@ -297,6 +333,11 @@
 
   function einsammeln() {
     FELDER.forEach(([id, pfad]) => schreib(daten, pfad, $(id).value.trim()));
+    daten.pakete = (daten.pakete || []).map((_, i) => {
+      const holen = (f) => (document.querySelector(`[data-p="${i}"][data-f="${f}"]`) || {}).value || '';
+      return { name: holen('name').trim(), umfang: holen('umfang').trim(),
+               text: holen('text').trim(), preis: holen('preis').trim() };
+    });
     daten.retreats = (daten.retreats || []).map((_, i) => {
       const holen = (f) => (document.querySelector(`[data-r="${i}"][data-f="${f}"]`) || {}).value || '';
       return { monat: holen('monat').trim(), ort: holen('ort').trim(),

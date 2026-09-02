@@ -33,6 +33,20 @@ def retreats_html():
     return '\n'.join(out)
 
 
+def pakete_html():
+    out = []
+    for p in INHALTE['pakete']:
+        preis = f'<span class="preis">{esc(p["preis"])}</span>' if p.get('preis') else ''
+        out.append(
+            '      <li>\n'
+            f'        <span class="was">{esc(p["name"])}</span>\n'
+            f'        <span class="umfang">{esc(p["umfang"])}</span>\n'
+            f'        <span class="desc">{esc(p["text"])}</span>\n'
+            f'        {preis}\n'
+            '      </li>')
+    return '\n'.join(out)
+
+
 def stimmen_klein_html():
     out = []
     for q in INHALTE['stimmen']['klein']:
@@ -63,6 +77,7 @@ def fill(html):
     {{=pfad}}  → nackter Wert (steht in einem Attribut)
     """
     html = html.replace('{{RETREATS}}', retreats_html())
+    html = html.replace('{{PAKETE}}', pakete_html())
     html = html.replace('{{STIMMEN_KLEIN}}', stimmen_klein_html())
     html = re.sub(r'\{\{=([a-z_]+(?:\.[a-z_]+)*)\}\}',
                   lambda m: esc(wert(m.group(1))), html)
@@ -85,6 +100,7 @@ MAIN = body.split('</nav>', 1)[1].split('<footer>', 1)[0]
 MAIN = MAIN.replace('<a class="more" href="#finanzen">', '<a class="more" href="/finanzcoaching.html">')
 # Listen, die die Eingabemaske komplett austauschen darf
 MAIN = MAIN.replace('<ul class="dates">', '<ul class="dates" data-i-list="retreats">')
+MAIN = MAIN.replace('<ul class="pakete">', '<ul class="pakete" data-i-list="pakete">')
 MAIN = MAIN.replace('<div class="quotes-small">', '<div class="quotes-small" data-i-list="stimmen">')
 
 
