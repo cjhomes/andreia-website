@@ -1,0 +1,62 @@
+{
+  "_hinweis": "Diese Datei enthält alles, was sich regelmäßig ändert. Später bearbeitet Andreia genau diese Felder über eine Eingabemaske.",
+
+  "preise": {
+    "coaching": "120 €",
+    "coaching_dauer": "60 Minuten",
+    "hnc": "110 €",
+    "hnc_dauer": "1 bis 1,5 Stunden",
+    "retreat_ab": "ab 590 €",
+    "finanzcoaching": "150 €",
+    "finanzcoaching_dauer": "90 Minuten",
+    "_status": "Beispielwerte — von Andreia zu bestätigen"
+  },
+
+  "retreats": [
+    {
+      "monat": "Mai 2027",
+      "ort": "Mallorca",
+      "text": "Ein langes Wochenende am Meer. Kleine Gruppe, viel Zeit, wenig Programm.",
+      "preis": "ab 690 €"
+    },
+    {
+      "monat": "Juni 2027",
+      "ort": "Lissabon",
+      "text": "Stadt, Licht und Meer — und ein Rahmen, in dem etwas in Bewegung kommt.",
+      "preis": "ab 590 €"
+    }
+  ],
+
+  "stimmen": {
+    "gross": {
+      "zitat": "Sie hört nicht nur zu. Sie nimmt einen als ganzen Menschen wahr.",
+      "name": "Nico · Google-Rezension"
+    },
+    "klein": [
+      {
+        "zitat": "Von Anfang an herrschte eine sehr angenehme und ruhige Atmosphäre.",
+        "name": "Denis S."
+      },
+      {
+        "zitat": "Von Anfang an angenehm, professionell und gleichzeitig sehr persönlich.",
+        "name": "Julia D."
+      }
+    ],
+    "bewertung": "5,0",
+    "anzahl": "22",
+    "google_link": "https://www.google.com/search?q=Andreia+da+Costa+Jalali+Life+Coach+D%C3%BCsseldorf"
+  },
+
+  "kontakt": {
+    "email": "info@andreiadacosta.de",
+    "telefon_anzeige": "+49 176 56 83 41 40",
+    "telefon_link": "+4917656834140",
+    "strasse": "Heyestraße 86",
+    "ort": "40625 Düsseldorf",
+    "instagram": "https://www.instagram.com/andreiadacosta_coaching/"
+  },
+
+  "impressum": {
+    "umsatzsteuer": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: wird ergänzt."
+  }
+}
