@@ -78,7 +78,6 @@
     <div class="col" style="margin-top:1.5rem;">
       <p>Im Gespräch schauen wir gemeinsam auf das, was gerade wirklich in dir vorgeht. Nicht auf das, was du anderen erzählst, wenn sie fragen, wie es dir geht — sondern auf das, was darunter liegt.</p>
       <p>Du gewinnst Klarheit über deine Situation, über die Muster, die sich wiederholen, und über deine nächsten Schritte — privat wie beruflich. Ich halte einen geschützten Raum, in dem du ehrlich sein darfst, auch dir selbst gegenüber. Ich dränge dich zu nichts; das Tempo bestimmst du.</p>
-      <p class="meta">Einzelsitzung · {{preise.coaching_dauer}} · vor Ort in Düsseldorf oder online · <span class="tbd" title="Beispielpreis">{{preise.coaching}}</span></p>
     </div>
 
     <div class="offergrid" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:clamp(56px,7vw,88px);">
@@ -102,30 +101,7 @@
   <div class="wrap reveal">
     <p class="eyebrow">Wie eine Sitzung abläuft</p>
     <h2 class="col">Du musst nichts vorbereiten.</h2>
-    <p class="col" style="margin-top:1.4rem;color:var(--ink-soft);">Die meisten wissen vor dem ersten Termin gar nicht so genau, was auf sie zukommt. Deshalb erzähle ich dir vorher, wie eine Sitzung bei mir aussieht.</p>
-    <div class="steps">
-      <div class="step">
-        <span class="n">Zuerst</span>
-        <h3>Ankommen</h3>
-        <p>Du musst nichts ausfüllen und nichts mitbringen. Die ersten Minuten gehören dir: ankommen, durchatmen, da sein. Losgehen können wir danach immer noch.</p>
-      </div>
-      <div class="step">
-        <span class="n">Dann</span>
-        <h3>Erzählen</h3>
-        <p>Du erzählst, was gerade los ist. In deinem Tempo, ohne Reihenfolge. Ich nehme mir die Zeit, deine Situation wirklich zu verstehen, bevor ich irgendetwas einordne.</p>
-      </div>
-      <div class="step">
-        <span class="n">Irgendwann</span>
-        <h3>Die Frage</h3>
-        <p>Irgendwann stelle ich dir eine Frage, die anders ist als die, die du dir selbst stellst. Das ist meistens der Moment, in dem sich etwas löst. Du siehst es selbst; ich habe nur gefragt.</p>
-      </div>
-      <div class="step">
-        <span class="n">Zum Schluss</span>
-        <h3>Ein Schritt für danach</h3>
-        <p>Am Ende nimmst du mehr mit als eine Erkenntnis: ein, zwei Schritte, die sich in deine Woche einfügen. Nichts, wofür du dein Leben umbauen musst.</p>
-      </div>
-    </div>
-
+    <p class="col" style="margin-top:1.4rem;color:var(--ink-soft);">Die meisten wissen vor dem ersten Termin gar nicht so genau, was auf sie zukommt. Deshalb hier vorab, wie es bei mir läuft.</p>
     <div class="col" style="margin-top:clamp(40px,5vw,64px);color:var(--ink-soft);">
       <p style="margin-top:0;">Am Anfang steht ein kostenloses Erstgespräch, dreißig Minuten, telefonisch oder online. Darin erzählst du mir, worum es geht, und wir schauen gemeinsam, was du brauchst. Daraus stellen wir dann ein Paket zusammen — meistens mehrere Sitzungen über einen Zeitraum, weil sich in einem einzelnen Termin selten etwas wirklich verändert. Wie viele es werden, entscheiden wir zusammen.</p>
       <p>Wir sehen uns in meinen Räumen in Düsseldorf, wo du in Ruhe ankommen kannst — oder online, wenn dir das lieber ist oder der Weg zu weit wäre. Was du mir erzählst, bleibt zwischen uns. Und zwischen den Terminen bin ich erreichbar, falls etwas hochkommt, das nicht bis zum nächsten Mal warten kann.</p>
@@ -223,10 +199,59 @@
     <p class="eyebrow">Kontakt</p>
     <h2>Schreib mir, wenn du spürst, dass es Zeit ist.</h2>
     <p>Ein erstes Gespräch verpflichtet zu nichts. Und wenn ich nicht die Richtige für dich bin, sage ich dir das offen — und nenne dir gern jemanden, der besser passt.</p>
-    <div class="actions">
-      <a class="btn" href="mailto:{{=kontakt.email}}?subject=Kostenloses%20Erstgespr%C3%A4ch">Erstgespräch per E-Mail anfragen</a>
-      <a class="btn btn-quiet" href="https://wa.me/4917656834140" rel="noopener">Lieber über WhatsApp</a>
-    </div>
+    <form class="kform" id="kform" novalidate>
+      <div class="kzeile">
+        <label class="kfeld"><span>Name</span><input type="text" name="name" maxlength="120" autocomplete="name" required></label>
+        <label class="kfeld"><span>E-Mail</span><input type="email" name="email" maxlength="200" autocomplete="email" required></label>
+      </div>
+      <label class="kfeld"><span>Worum geht es?</span><textarea name="nachricht" rows="5" maxlength="3000" required placeholder="Ein paar Sätze reichen. Du musst nichts erklären, was du noch nicht erklären möchtest."></textarea></label>
+      <label class="kfeld ktopf" aria-hidden="true"><span>Bitte frei lassen</span><input type="text" name="webseite" tabindex="-1" autocomplete="off"></label>
+      <label class="kcheck"><input type="checkbox" name="einverstanden" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Mehr dazu im <a href="/datenschutz.html">Datenschutz</a>.</span></label>
+      <div class="actions">
+        <button class="btn" type="submit">Anfrage senden</button>
+        <a class="btn btn-quiet" href="https://wa.me/4917656834140" rel="noopener">Lieber über WhatsApp</a>
+      </div>
+      <p class="kstatus" id="kstatus" role="status" aria-live="polite"></p>
+    </form>
+<script>
+(function(){
+  var f = document.getElementById('kform');
+  if (!f) return;
+  var s = document.getElementById('kstatus');
+  var e = f.elements;
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (!f.reportValidity()) return;
+    var knopf = f.querySelector('button[type=submit]');
+    knopf.disabled = true;
+    s.className = 'kstatus';
+    s.textContent = 'Wird gesendet …';
+    fetch('/kontakt', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        name: e['name'].value, email: e['email'].value,
+        nachricht: e['nachricht'].value, webseite: e['webseite'].value,
+        einverstanden: e['einverstanden'].checked
+      })
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; });
+    }).then(function (r) {
+      if (r && r.ok) {
+        f.reset();
+        s.className = 'kstatus gut';
+        s.textContent = 'Danke — deine Nachricht ist angekommen. Ich melde mich, meist innerhalb von zwei Tagen.';
+      } else {
+        s.className = 'kstatus schlecht';
+        s.textContent = (r && r.fehler) || 'Das hat leider nicht geklappt. Schreib mir gern über WhatsApp.';
+      }
+    }).catch(function () {
+      s.className = 'kstatus schlecht';
+      s.textContent = 'Das hat leider nicht geklappt. Schreib mir gern über WhatsApp.';
+    }).then(function () { knopf.disabled = false; });
+  });
+})();
+</script>
   </div>
 </section>
 

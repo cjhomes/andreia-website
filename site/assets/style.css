@@ -252,3 +252,24 @@
     .langs{display:none;}
     .draftbar .wrap{gap:.2rem 1rem;}
   }
+
+  /* Kontaktformular */
+  .kform{margin-top:2.2rem;max-width:640px;}
+  .kzeile{display:grid;gap:18px;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .kfeld{display:block;margin-top:18px;}
+  .kzeile .kfeld{margin-top:0;}
+  .kfeld>span{display:block;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px;}
+  .kfeld input,.kfeld textarea{width:100%;box-sizing:border-box;font:inherit;font-size:1rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);padding:12px 14px;transition:border-color .18s ease;}
+  .kfeld textarea{resize:vertical;line-height:1.62;}
+  .kfeld input:focus,.kfeld textarea:focus{outline:none;border-color:var(--ink);}
+  .kfeld input::placeholder,.kfeld textarea::placeholder{color:var(--ink-mute);}
+  .ktopf{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .kcheck{display:flex;gap:10px;align-items:flex-start;margin-top:20px;font-size:.87rem;line-height:1.55;color:var(--ink-soft);max-width:560px;}
+  .kcheck input{margin-top:4px;accent-color:var(--aussen);}
+  .kcheck a{color:var(--ink);}
+  .kform .btn{background:none;font-family:inherit;cursor:pointer;}
+  .kform .btn[disabled]{opacity:.5;cursor:default;}
+  .kstatus{min-height:1.3em;margin-top:1.2rem;font-size:.92rem;line-height:1.55;color:var(--ink-soft);}
+  .kstatus.gut{color:var(--innen);}
+  .kstatus.schlecht{color:var(--aussen);}
+  @media(max-width:620px){.kzeile{grid-template-columns:1fr;}.kzeile .kfeld+.kfeld{margin-top:18px;}}

@@ -13,6 +13,9 @@ const SCHLUESSEL = 'inhalte';      // aktueller Stand im KV
 const VERLAUF = 'verlauf';         // die letzten zehn Stände
 const MAX_VERLAUF = 10;
 const TAGE_ANGEMELDET = 30;
+const ANFRAGEN = 'anfragen';       // eingegangene Kontaktanfragen
+const MAX_ANFRAGEN = 300;
+const ANFRAGEN_PRO_STUNDE = 5;     // je Absender-IP
 
 // ---------------------------------------------------------------- Hilfsmittel
 
@@ -187,6 +190,120 @@ function pruefen(eingabe) {
   return { ok: true };
 }
 
+// ---------------------------------------------------------------- Kontaktanfragen
+
+const MAIL_MUSTER = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+async function anfragenListe(env) {
+  try { return JSON.parse((await env.INHALTE?.get(ANFRAGEN)) || '[]'); } catch { return []; }
+}
+
+/** Nimmt das Formular von der Startseite entgegen. */
+async function anfrageAnnehmen(request, env) {
+  if (!env.INHALTE) return json({ fehler: 'Der Speicher ist gerade nicht erreichbar.' }, 503);
+
+  const ip = request.headers.get('cf-connecting-ip') || 'unbekannt';
+  const zaehler = `kontakt:${ip}`;
+  const bisher = Number((await env.INHALTE.get(zaehler)) || 0);
+  if (bisher >= ANFRAGEN_PRO_STUNDE) {
+    return json({ fehler: 'Von hier kamen gerade schon einige Anfragen. Bitte später noch einmal probieren.' }, 429);
+  }
+
+  const d = await request.json().catch(() => null);
+  if (!d || typeof d !== 'object') return json({ fehler: 'Da fehlt etwas.' }, 400);
+  // Falle für automatische Einträge: Menschen füllen dieses Feld nie aus.
+  if (typeof d.webseite === 'string' && d.webseite.trim()) return json({ ok: true });
+
+  const name = String(d.name || '').trim();
+  const email = String(d.email || '').trim();
+  const nachricht = String(d.nachricht || '').trim();
+  if (name.length < 2 || name.length > 120) return json({ fehler: 'Bitte trag deinen Namen ein.' }, 400);
+  if (!MAIL_MUSTER.test(email) || email.length > 200) return json({ fehler: 'Bitte eine gültige E-Mail-Adresse angeben.' }, 400);
+  if (nachricht.length < 5 || nachricht.length > 3000) return json({ fehler: 'Bitte schreib ein paar Sätze zu deinem Anliegen.' }, 400);
+  if (d.einverstanden !== true) return json({ fehler: 'Ohne dein Einverständnis kann ich die Anfrage nicht speichern.' }, 400);
+
+  const liste = await anfragenListe(env);
+  liste.unshift({ id: crypto.randomUUID(), zeit: new Date().toISOString(), name, email, nachricht });
+  await env.INHALTE.put(ANFRAGEN, JSON.stringify(liste.slice(0, MAX_ANFRAGEN)));
+  await env.INHALTE.put(zaehler, String(bisher + 1), { expirationTtl: 3600 });
+  return json({ ok: true });
+}
+
+function zeitpunkt(iso) {
+  try {
+    return new Date(iso).toLocaleString('de-DE', {
+      timeZone: 'Europe/Berlin', day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit',
+    });
+  } catch { return iso; }
+}
+
+/** Posteingang unter /admin/anfragen. */
+function anfragenSeite(liste) {
+  const eintraege = liste.length ? liste.map((a) => `
+    <article class="anfrage" data-id="${esc(a.id)}">
+      <div class="kopf"><b>${esc(a.name)}</b><time>${esc(zeitpunkt(a.zeit))}</time></div>
+      <p class="mail"><a href="mailto:${esc(a.email)}?subject=Deine%20Anfrage">${esc(a.email)}</a></p>
+      <p class="text">${esc(a.nachricht).replace(/\n/g, '<br>')}</p>
+      <button type="button" class="weg">Löschen</button>
+    </article>`).join('') : '<p class="leer">Noch keine Anfragen.</p>';
+
+  return `<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Anfragen — Andreia da Costa</title>
+<style>
+  :root{--ground:#FBF7F4;--surface:#FDFAF8;--ink:#4A3A34;--ink-soft:#71605A;--ink-mute:#A2918A;--line:#E7D9D1;--aussen:#A3512B;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px;}
+  header{border-bottom:1px solid var(--line);background:var(--surface);padding:26px 0;}
+  header .wrap{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;}
+  h1{font-size:1.3rem;font-weight:600;margin:0;}
+  header p{margin:0;color:var(--ink-mute);font-size:.9rem;}
+  header .rechts{margin-left:auto;display:flex;gap:14px;}
+  a{color:var(--aussen);}
+  main{padding:34px 0 80px;}
+  .anfrage{background:var(--surface);border:1px solid var(--line);padding:20px 22px;margin-bottom:16px;}
+  .kopf{display:flex;justify-content:space-between;gap:14px;align-items:baseline;}
+  .kopf b{font-size:1.05rem;}
+  time{color:var(--ink-mute);font-size:.84rem;white-space:nowrap;}
+  .mail{margin:.3rem 0 .9rem;font-size:.92rem;}
+  .text{margin:0;white-space:normal;color:var(--ink-soft);}
+  .weg{margin-top:16px;background:none;border:1px solid var(--line);color:var(--ink-mute);font:inherit;font-size:.84rem;padding:7px 14px;cursor:pointer;}
+  .weg:hover{border-color:var(--aussen);color:var(--aussen);}
+  .leer{color:var(--ink-mute);}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Anfragen</h1>
+  <p>${liste.length} gespeichert</p>
+  <span class="rechts"><a href="/admin/">Inhalte pflegen</a><a href="/">Zur Website</a></span>
+</div></header>
+<main class="wrap">${eintraege}</main>
+<script>
+document.addEventListener('click', function (e) {
+  var k = e.target.closest('.weg');
+  if (!k) return;
+  var karte = k.closest('.anfrage');
+  if (!confirm('Diese Anfrage endgültig löschen?')) return;
+  k.disabled = true;
+  fetch('/admin/api/anfrage-weg', {
+    method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ id: karte.dataset.id })
+  }).then(function (r) { return r.json(); }).then(function (r) {
+    if (r && r.ok) karte.remove(); else { k.disabled = false; alert((r && r.fehler) || 'Hat nicht geklappt.'); }
+  }).catch(function () { k.disabled = false; alert('Hat nicht geklappt.'); });
+});
+</script>
+</body>
+</html>`;
+}
+
 // ---------------------------------------------------------------- API
 
 async function api(request, env, url) {
@@ -259,6 +376,15 @@ async function api(request, env, url) {
     return json({ ok: true, inhalte: stand.inhalte });
   }
 
+  if (pfad === 'anfrage-weg' && post) {
+    const { id } = await request.json().catch(() => ({}));
+    const liste = await anfragenListe(env);
+    const rest = liste.filter((a) => a.id !== id);
+    if (rest.length === liste.length) return json({ fehler: 'Diese Anfrage gibt es nicht mehr.' }, 404);
+    await env.INHALTE.put(ANFRAGEN, JSON.stringify(rest));
+    return json({ ok: true });
+  }
+
   return json({ fehler: 'Unbekannter Aufruf.' }, 404);
 }
 
@@ -267,6 +393,20 @@ async function api(request, env, url) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    if (url.pathname === '/kontakt' && request.method === 'POST') {
+      return anfrageAnnehmen(request, env)
+        .catch(() => json({ fehler: 'Da ist etwas schiefgelaufen.' }, 500));
+    }
+
+    if (url.pathname === '/admin/anfragen' || url.pathname === '/admin/anfragen/') {
+      if (!(await angemeldet(request, env))) {
+        return Response.redirect(new URL('/admin/', url).toString(), 302);
+      }
+      return new Response(anfragenSeite(await anfragenListe(env)), {
+        headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' },
+      });
+    }
 
     if (url.pathname.startsWith('/admin/api')) {
       return api(request, env, url).catch(() => json({ fehler: 'Da ist etwas schiefgelaufen.' }, 500));
