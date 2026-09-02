@@ -1,6 +1,5 @@
 {
   "_hinweis": "Diese Datei enthält alles, was sich regelmäßig ändert. Später bearbeitet Andreia genau diese Felder über eine Eingabemaske.",
-
   "preise": {
     "coaching": "120 €",
     "coaching_dauer": "60 Minuten",
@@ -11,7 +10,6 @@
     "finanzcoaching_dauer": "90 Minuten",
     "_status": "Beispielwerte — von Andreia zu bestätigen"
   },
-
   "retreats": [
     {
       "monat": "Mai 2027",
@@ -26,7 +24,6 @@
       "preis": "ab 590 €"
     }
   ],
-
   "stimmen": {
     "gross": {
       "zitat": "Sie hört nicht nur zu. Sie nimmt einen als ganzen Menschen wahr.",
@@ -40,13 +37,16 @@
       {
         "zitat": "Von Anfang an angenehm, professionell und gleichzeitig sehr persönlich.",
         "name": "Julia D."
+      },
+      {
+        "zitat": "Themen, die mich schon seit vielen Jahren belastet haben, durfte ich endlich loslassen.",
+        "name": "Anna H."
       }
     ],
     "bewertung": "5,0",
     "anzahl": "22",
     "google_link": "https://www.google.com/search?q=Andreia+da+Costa+Jalali+Life+Coach+D%C3%BCsseldorf"
   },
-
   "kontakt": {
     "email": "info@andreiadacosta.de",
     "telefon_anzeige": "+49 176 56 83 41 40",
@@ -55,7 +55,6 @@
     "ort": "40625 Düsseldorf",
     "instagram": "https://www.instagram.com/andreiadacosta_coaching/"
   },
-
   "impressum": {
     "umsatzsteuer": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: wird ergänzt."
   }
