@@ -44,22 +44,32 @@ def stimmen_klein_html():
     return '\n'.join(out)
 
 
+ALIAS = {'bewertung': 'stimmen.bewertung', 'anzahl': 'stimmen.anzahl'}
+
+
+def wert(pfad):
+    node = INHALTE
+    for teil in ALIAS.get(pfad, pfad).split('.'):
+        if not isinstance(node, dict) or teil not in node:
+            raise KeyError('inhalte.json kennt "%s" nicht' % pfad)
+        node = node[teil]
+    return node
+
+
 def fill(html):
-    """Ersetzt {{pfad.zum.wert}} durch den Wert aus inhalte.json."""
+    """Setzt die Werte aus inhalte.json ein.
+
+    {{pfad}}   → <span data-i="pfad">Wert</span>  (zur Laufzeit austauschbar)
+    {{=pfad}}  → nackter Wert (steht in einem Attribut)
+    """
     html = html.replace('{{RETREATS}}', retreats_html())
     html = html.replace('{{STIMMEN_KLEIN}}', stimmen_klein_html())
-    html = html.replace('{{bewertung}}', esc(INHALTE['stimmen']['bewertung']))
-    html = html.replace('{{anzahl}}', esc(INHALTE['stimmen']['anzahl']))
-
-    def lookup(m):
-        node = INHALTE
-        for teil in m.group(1).split('.'):
-            if not isinstance(node, dict) or teil not in node:
-                raise KeyError('inhalte.json kennt "%s" nicht' % m.group(1))
-            node = node[teil]
-        return esc(node)
-
-    return re.sub(r'\{\{([a-z_]+(?:\.[a-z_]+)*)\}\}', lookup, html)
+    html = re.sub(r'\{\{=([a-z_]+(?:\.[a-z_]+)*)\}\}',
+                  lambda m: esc(wert(m.group(1))), html)
+    return re.sub(r'\{\{([a-z_]+(?:\.[a-z_]+)*)\}\}',
+                  lambda m: '<span data-i="%s">%s</span>' % (
+                      ALIAS.get(m.group(1), m.group(1)), esc(wert(m.group(1)))),
+                  html)
 
 body = open(os.path.join(BUILD, '_index_body.html'), encoding='utf-8').read()
 # Portraitfoto: liegt vorerst noch auf dem Wix-CDN, bis die Originaldatei da ist.
@@ -73,6 +83,9 @@ FOOTER = re.search(r'(<footer>.*?</footer>)', body, re.S).group(1)
 MAIN = body.split('</nav>', 1)[1].split('<footer>', 1)[0]
 # Der Teaser auf der Startseite führt auf die Unterseite, nicht auf sich selbst.
 MAIN = MAIN.replace('<a class="more" href="#finanzen">', '<a class="more" href="/finanzcoaching.html">')
+# Listen, die die Eingabemaske komplett austauschen darf
+MAIN = MAIN.replace('<ul class="dates">', '<ul class="dates" data-i-list="retreats">')
+MAIN = MAIN.replace('<div class="quotes-small">', '<div class="quotes-small" data-i-list="stimmen">')
 
 
 def nav_for(page):
@@ -94,11 +107,11 @@ def footer_for(page):
     f = f.replace('<a href="#kontakt">Datenschutz</a>', '<a href="/datenschutz.html">Datenschutz</a>')
     f = f.replace('<br>\n          <a href="#kontakt">AGB</a>', '')
     f = f.replace('<a href="#kontakt">{{kontakt.email}}</a>',
-                  '<a href="mailto:{{kontakt.email}}">{{kontakt.email}}</a>')
+                  '<a href="mailto:{{=kontakt.email}}">{{kontakt.email}}</a>')
     f = f.replace('<a href="#kontakt">{{kontakt.telefon_anzeige}}</a>',
-                  '<a href="tel:{{kontakt.telefon_link}}">{{kontakt.telefon_anzeige}}</a>')
+                  '<a href="tel:{{=kontakt.telefon_link}}">{{kontakt.telefon_anzeige}}</a>')
     f = f.replace('<a href="#kontakt">Instagram</a>',
-                  '<a href="{{kontakt.instagram}}" rel="noopener">Instagram</a>')
+                  '<a href="{{=kontakt.instagram}}" rel="noopener">Instagram</a>')
     if page != 'index':
         f = f.replace('src="assets/', 'src="/assets/')
     return f
@@ -159,6 +172,14 @@ if __name__ == '__main__':
         shutil.rmtree(OUT)
     os.makedirs(OUT)
     shutil.copytree(os.path.join(BUILD, 'assets'), os.path.join(OUT, 'assets'))
+
+    # Ausgangsstand für die Eingabemaske: greift, solange nichts gespeichert wurde
+    shutil.copyfile(os.path.join(ROOT, 'inhalte.json'),
+                    os.path.join(OUT, '_inhalte.json'))
+    # Eingabemaske unter /admin
+    os.makedirs(os.path.join(OUT, 'admin'))
+    shutil.copyfile(os.path.join(BUILD, 'admin.html'),
+                    os.path.join(OUT, 'admin', 'index.html'))
 
     from pages import PAGES
     page('index', 'Andreia da Costa — Authentisch leben, klar handeln',

@@ -1,0 +1,13 @@
+{
+  "name": "andreia-website",
+  "private": true,
+  "description": "Website von Andreia da Costa — Generator, Worker und Eingabemaske",
+  "scripts": {
+    "bauen": "python3 build.py",
+    "vorschau": "python3 build.py && wrangler dev --local",
+    "veroeffentlichen": "python3 build.py && wrangler deploy"
+  },
+  "dependencies": {
+    "wrangler": "^4.128.0"
+  }
+}

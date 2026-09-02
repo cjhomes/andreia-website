@@ -113,8 +113,8 @@ IMPRESSUM = '''
       <p style="margin-top:1rem;">Andreia da Costa<br>{{kontakt.strasse}}<br>{{kontakt.ort}}<br>Deutschland</p>
 
       <h3 style="margin-top:2.2rem;">Kontakt</h3>
-      <p style="margin-top:1rem;">Telefon: <a href="tel:{{kontakt.telefon_link}}">{{kontakt.telefon_anzeige}}</a><br>
-      E-Mail: <a href="mailto:{{kontakt.email}}">{{kontakt.email}}</a></p>
+      <p style="margin-top:1rem;">Telefon: <a href="tel:{{=kontakt.telefon_link}}">{{kontakt.telefon_anzeige}}</a><br>
+      E-Mail: <a href="mailto:{{=kontakt.email}}">{{kontakt.email}}</a></p>
 
       <h3 style="margin-top:2.2rem;">Umsatzsteuer</h3>
       <p class="tbd" style="margin-top:1rem;" title="Von Andreia zu ergänzen: USt-IdNr. oder Kleinunternehmerregelung">{{impressum.umsatzsteuer}}</p>
@@ -148,7 +148,7 @@ DATENSCHUTZ = '''
       <p>Der Schutz deiner Daten ist mir wichtig. Hier steht, welche Daten beim Besuch dieser Website anfallen, was damit passiert und welche Rechte du hast.</p>
 
       <h3 style="margin-top:2.2rem;">Verantwortliche</h3>
-      <p style="margin-top:1rem;">Andreia da Costa, {{kontakt.strasse}}, {{kontakt.ort}}, <a href="mailto:{{kontakt.email}}">{{kontakt.email}}</a>, <a href="tel:{{kontakt.telefon_link}}">{{kontakt.telefon_anzeige}}</a>.</p>
+      <p style="margin-top:1rem;">Andreia da Costa, {{kontakt.strasse}}, {{kontakt.ort}}, <a href="mailto:{{=kontakt.email}}">{{kontakt.email}}</a>, <a href="tel:{{=kontakt.telefon_link}}">{{kontakt.telefon_anzeige}}</a>.</p>
 
       <h3 style="margin-top:2.2rem;">Hosting</h3>
       <p style="margin-top:1rem;">Diese Website wird bei Cloudflare gehostet. Beim Aufruf werden technisch notwendige Zugriffsdaten verarbeitet — IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browsertyp. Rechtsgrundlage ist mein berechtigtes Interesse an einem sicheren und stabilen Betrieb der Website (Art. 6 Abs. 1 lit. f DSGVO). Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung.</p>
