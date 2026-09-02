@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Inhalte pflegen — Andreia da Costa</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --ground:#FBF7F4; --surface:#FFFFFF; --line:#E7D9D1; --line-soft:#F0E5DE;
+    --ink:#4A3A34; --ink-soft:#71605A; --ink-mute:#A2918A;
+    --akzent:#A3512B; --gruen:#7E9078;
+    --radius:10px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:40px 22px 120px}
+  header.top{border-bottom:1px solid var(--line); background:var(--surface)}
+  header.top .wrap{padding:20px 22px; display:flex; align-items:baseline; gap:16px; flex-wrap:wrap}
+  header.top h1{margin:0; font-size:1.05rem; font-weight:600; letter-spacing:.01em}
+  header.top p{margin:0; color:var(--ink-mute); font-size:.87rem}
+  header.top .spacer{flex:1}
+
+  h2{font-size:.78rem; text-transform:uppercase; letter-spacing:.14em;
+     color:var(--ink-mute); font-weight:600; margin:0 0 14px}
+  section.karte{
+    background:var(--surface); border:1px solid var(--line-soft);
+    border-radius:var(--radius); padding:24px; margin-bottom:20px;
+  }
+  .feld{margin-bottom:16px}
+  .feld:last-child{margin-bottom:0}
+  label{display:block; font-size:.83rem; color:var(--ink-soft); margin-bottom:5px}
+  input,textarea{
+    width:100%; font:inherit; color:var(--ink); background:var(--ground);
+    border:1px solid var(--line); border-radius:7px; padding:9px 11px;
+  }
+  textarea{resize:vertical; min-height:74px}
+  input:focus,textarea:focus{outline:2px solid var(--akzent); outline-offset:-1px; background:#fff}
+  .zwei{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:560px){ .zwei{grid-template-columns:1fr} }
+
+  .eintrag{border:1px solid var(--line-soft); border-radius:8px; padding:16px; margin-bottom:14px; position:relative}
+  .eintrag .weg{
+    position:absolute; top:10px; right:10px; border:0; background:none; cursor:pointer;
+    color:var(--ink-mute); font-size:1.1rem; line-height:1; padding:4px 7px; border-radius:5px;
+  }
+  .eintrag .weg:hover{background:var(--line-soft); color:var(--akzent)}
+
+  button{font:inherit; cursor:pointer}
+  .btn{
+    border:1px solid var(--akzent); background:var(--akzent); color:#fff;
+    padding:10px 20px; border-radius:7px; font-weight:500;
+  }
+  .btn:disabled{opacity:.5; cursor:default}
+  .btn.stil{background:none; color:var(--akzent)}
+  .btn.leise{background:none; border-color:var(--line); color:var(--ink-soft); padding:7px 14px; font-size:.88rem}
+
+  .leiste{
+    position:fixed; left:0; right:0; bottom:0; background:var(--surface);
+    border-top:1px solid var(--line); padding:14px 22px;
+  }
+  .leiste .inner{max-width:760px; margin:0 auto; display:flex; align-items:center; gap:16px}
+  .status{font-size:.88rem; color:var(--ink-mute)}
+  .status.gut{color:var(--gruen)}
+  .status.schlecht{color:#B4462A}
+
+  .hinweis{font-size:.83rem; color:var(--ink-mute); margin:-6px 0 14px}
+  .verlaufzeile{
+    display:flex; align-items:center; gap:14px; padding:9px 0;
+    border-bottom:1px solid var(--line-soft); font-size:.9rem;
+  }
+  .verlaufzeile:last-child{border-bottom:0}
+  .verlaufzeile span{flex:1; color:var(--ink-soft)}
+
+  #anmeldung{max-width:380px; margin:14vh auto 0; text-align:center}
+  #anmeldung .karte{text-align:left}
+  #anmeldung h1{font-size:1.35rem; font-weight:500; margin:0 0 6px}
+  #anmeldung p.unter{color:var(--ink-mute); font-size:.9rem; margin:0 0 26px}
+  [hidden]{display:none !important}
+</style>
+</head>
+<body>
+
+<!-- ---------------------------------------------------------------- Anmeldung -->
+<div id="anmeldung" class="wrap" hidden>
+  <h1>Inhalte pflegen</h1>
+  <p class="unter">Website von Andreia da Costa</p>
+  <section class="karte">
+    <form id="anmeldeform">
+      <div class="feld">
+        <label for="code">Zugangscode</label>
+        <input id="code" type="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn" type="submit" style="width:100%">Anmelden</button>
+      <p class="status schlecht" id="anmeldefehler" style="margin:12px 0 0" hidden></p>
+    </form>
+  </section>
+</div>
+
+<!-- ---------------------------------------------------------------- Maske -->
+<div id="maske" hidden>
+  <header class="top">
+    <div class="wrap">
+      <h1>Inhalte pflegen</h1>
+      <p>Änderungen sind sofort auf der Website sichtbar.</p>
+      <span class="spacer"></span>
+      <button class="btn leise" id="abmelden">Abmelden</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <section class="karte">
+      <h2>Preise</h2>
+      <p class="hinweis">Erscheinen unter den jeweiligen Angeboten.</p>
+      <div class="zwei">
+        <div class="feld"><label for="p_coaching">Coaching</label><input id="p_coaching"></div>
+        <div class="feld"><label for="p_coaching_d">Dauer</label><input id="p_coaching_d"></div>
+        <div class="feld"><label for="p_hnc">hnc</label><input id="p_hnc"></div>
+        <div class="feld"><label for="p_hnc_d">Dauer</label><input id="p_hnc_d"></div>
+        <div class="feld"><label for="p_finanz">Finanzcoaching</label><input id="p_finanz"></div>
+        <div class="feld"><label for="p_finanz_d">Dauer</label><input id="p_finanz_d"></div>
+        <div class="feld"><label for="p_retreat">Retreats ab</label><input id="p_retreat"></div>
+      </div>
+    </section>
+
+    <section class="karte">
+      <h2>Retreats</h2>
+      <p class="hinweis">Die Reihenfolge hier ist die Reihenfolge auf der Seite.</p>
+      <div id="retreats"></div>
+      <button class="btn stil" id="retreat_neu" type="button">+ Retreat hinzufügen</button>
+    </section>
+
+    <section class="karte">
+      <h2>Stimmen</h2>
+      <div class="feld"><label for="s_zitat">Großes Zitat</label><textarea id="s_zitat"></textarea></div>
+      <div class="feld"><label for="s_name">Wer sagt das</label><input id="s_name"></div>
+      <div class="zwei">
+        <div class="feld"><label for="s_bewertung">Sterne-Schnitt</label><input id="s_bewertung"></div>
+        <div class="feld"><label for="s_anzahl">Anzahl Rezensionen</label><input id="s_anzahl"></div>
+      </div>
+      <div class="feld"><label for="s_link">Link zu den Google-Rezensionen</label><input id="s_link"></div>
+      <h2 style="margin-top:26px">Kurze Stimmen</h2>
+      <div id="stimmen"></div>
+      <button class="btn stil" id="stimme_neu" type="button">+ Stimme hinzufügen</button>
+    </section>
+
+    <section class="karte">
+      <h2>Kontakt</h2>
+      <p class="hinweis">Wird überall verwendet — auch im Impressum und in den Links.</p>
+      <div class="feld"><label for="k_email">E-Mail</label><input id="k_email" type="email"></div>
+      <div class="zwei">
+        <div class="feld"><label for="k_tel">Telefon, wie es dasteht</label><input id="k_tel"></div>
+        <div class="feld"><label for="k_tellink">Telefon zum Anrufen</label><input id="k_tellink"></div>
+      </div>
+      <div class="zwei">
+        <div class="feld"><label for="k_strasse">Straße</label><input id="k_strasse"></div>
+        <div class="feld"><label for="k_ort">PLZ und Ort</label><input id="k_ort"></div>
+      </div>
+      <div class="feld"><label for="k_insta">Instagram</label><input id="k_insta"></div>
+      <div class="feld"><label for="i_ust">Umsatzsteuer-Zeile im Impressum</label><input id="i_ust"></div>
+    </section>
+
+    <section class="karte">
+      <h2>Frühere Stände</h2>
+      <p class="hinweis">Die letzten zehn gespeicherten Stände. Zurückholen ändert die Seite sofort.</p>
+      <div id="verlauf"></div>
+    </section>
+
+  </div>
+
+  <div class="leiste">
+    <div class="inner">
+      <button class="btn" id="speichern">Speichern</button>
+      <span class="status" id="status"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  let daten = null;
+
+  const FELDER = [
+    ['p_coaching', 'preise.coaching'], ['p_coaching_d', 'preise.coaching_dauer'],
+    ['p_hnc', 'preise.hnc'], ['p_hnc_d', 'preise.hnc_dauer'],
+    ['p_finanz', 'preise.finanzcoaching'], ['p_finanz_d', 'preise.finanzcoaching_dauer'],
+    ['p_retreat', 'preise.retreat_ab'],
+    ['s_zitat', 'stimmen.gross.zitat'], ['s_name', 'stimmen.gross.name'],
+    ['s_bewertung', 'stimmen.bewertung'], ['s_anzahl', 'stimmen.anzahl'],
+    ['s_link', 'stimmen.google_link'],
+    ['k_email', 'kontakt.email'], ['k_tel', 'kontakt.telefon_anzeige'],
+    ['k_tellink', 'kontakt.telefon_link'], ['k_strasse', 'kontakt.strasse'],
+    ['k_ort', 'kontakt.ort'], ['k_insta', 'kontakt.instagram'],
+    ['i_ust', 'impressum.umsatzsteuer'],
+  ];
+
+  const lies = (o, p) => p.split('.').reduce((n, t) => (n == null ? n : n[t]), o);
+  function schreib(o, p, v) {
+    const teile = p.split('.');
+    let n = o;
+    for (const t of teile.slice(0, -1)) n = (n[t] = n[t] || {});
+    n[teile[teile.length - 1]] = v;
+  }
+
+  async function ruf(pfad, optionen) {
+    const res = await fetch('/admin/api/' + pfad, {
+      headers: { 'content-type': 'application/json' }, ...optionen,
+    });
+    const body = await res.json().catch(() => ({}));
+    return { ok: res.ok, status: res.status, ...body };
+  }
+
+  // ------------------------------------------------------------- Anmeldung
+  $('anmeldeform').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const antwort = await ruf('anmelden', {
+      method: 'POST', body: JSON.stringify({ code: $('code').value }),
+    });
+    if (antwort.ok) { $('code').value = ''; starten(); return; }
+    $('anmeldefehler').textContent = antwort.fehler || 'Anmeldung fehlgeschlagen.';
+    $('anmeldefehler').hidden = false;
+  });
+
+  $('abmelden').addEventListener('click', async () => {
+    await ruf('abmelden', { method: 'POST' });
+    location.reload();
+  });
+
+  // ------------------------------------------------------------- Listen
+  function zeileRetreat(r, i) {
+    const el = document.createElement('div');
+    el.className = 'eintrag';
+    el.innerHTML = `
+      <button class="weg" type="button" title="Entfernen" data-weg="${i}">×</button>
+      <div class="zwei">
+        <div class="feld"><label>Monat</label><input data-r="${i}" data-f="monat"></div>
+        <div class="feld"><label>Ort</label><input data-r="${i}" data-f="ort"></div>
+      </div>
+      <div class="feld"><label>Beschreibung</label><textarea data-r="${i}" data-f="text"></textarea></div>
+      <div class="feld"><label>Preis</label><input data-r="${i}" data-f="preis"></div>`;
+    el.querySelectorAll('[data-f]').forEach((f) => { f.value = r[f.dataset.f] || ''; });
+    return el;
+  }
+
+  function zeileStimme(q, i) {
+    const el = document.createElement('div');
+    el.className = 'eintrag';
+    el.innerHTML = `
+      <button class="weg" type="button" title="Entfernen" data-wegs="${i}">×</button>
+      <div class="feld"><label>Zitat</label><textarea data-s="${i}" data-f="zitat"></textarea></div>
+      <div class="feld"><label>Wer sagt das</label><input data-s="${i}" data-f="name"></div>`;
+    el.querySelectorAll('[data-f]').forEach((f) => { f.value = q[f.dataset.f] || ''; });
+    return el;
+  }
+
+  function listenZeichnen() {
+    const r = $('retreats'); r.innerHTML = '';
+    (daten.retreats || []).forEach((x, i) => r.appendChild(zeileRetreat(x, i)));
+    const s = $('stimmen'); s.innerHTML = '';
+    ((daten.stimmen || {}).klein || []).forEach((x, i) => s.appendChild(zeileStimme(x, i)));
+  }
+
+  $('retreats').addEventListener('click', (e) => {
+    const i = e.target.dataset.weg;
+    if (i === undefined) return;
+    einsammeln(); daten.retreats.splice(Number(i), 1); listenZeichnen();
+  });
+  $('stimmen').addEventListener('click', (e) => {
+    const i = e.target.dataset.wegs;
+    if (i === undefined) return;
+    einsammeln(); daten.stimmen.klein.splice(Number(i), 1); listenZeichnen();
+  });
+  $('retreat_neu').addEventListener('click', () => {
+    einsammeln();
+    (daten.retreats = daten.retreats || []).push({ monat: '', ort: '', text: '', preis: '' });
+    listenZeichnen();
+  });
+  $('stimme_neu').addEventListener('click', () => {
+    einsammeln();
+    daten.stimmen = daten.stimmen || {};
+    (daten.stimmen.klein = daten.stimmen.klein || []).push({ zitat: '', name: '' });
+    listenZeichnen();
+  });
+
+  // ------------------------------------------------------------- Formular
+  function ausfuellen() {
+    FELDER.forEach(([id, pfad]) => { $(id).value = lies(daten, pfad) || ''; });
+    listenZeichnen();
+  }
+
+  function einsammeln() {
+    FELDER.forEach(([id, pfad]) => schreib(daten, pfad, $(id).value.trim()));
+    daten.retreats = (daten.retreats || []).map((_, i) => {
+      const holen = (f) => (document.querySelector(`[data-r="${i}"][data-f="${f}"]`) || {}).value || '';
+      return { monat: holen('monat').trim(), ort: holen('ort').trim(),
+               text: holen('text').trim(), preis: holen('preis').trim() };
+    });
+    daten.stimmen = daten.stimmen || {};
+    daten.stimmen.klein = (daten.stimmen.klein || []).map((_, i) => {
+      const holen = (f) => (document.querySelector(`[data-s="${i}"][data-f="${f}"]`) || {}).value || '';
+      return { zitat: holen('zitat').trim(), name: holen('name').trim() };
+    });
+  }
+
+  function melden(text, art) {
+    const s = $('status');
+    s.textContent = text;
+    s.className = 'status' + (art ? ' ' + art : '');
+  }
+
+  $('speichern').addEventListener('click', async () => {
+    einsammeln();
+    $('speichern').disabled = true;
+    melden('Wird gespeichert …');
+    const antwort = await ruf('inhalte', { method: 'POST', body: JSON.stringify(daten) });
+    $('speichern').disabled = false;
+    if (antwort.ok) { melden('Gespeichert. Die Seite zeigt es sofort.', 'gut'); verlaufLaden(); }
+    else melden(antwort.fehler || 'Konnte nicht gespeichert werden.', 'schlecht');
+  });
+
+  // ------------------------------------------------------------- Verlauf
+  async function verlaufLaden() {
+    const antwort = await ruf('verlauf');
+    const ziel = $('verlauf');
+    ziel.innerHTML = '';
+    if (!antwort.verlauf || !antwort.verlauf.length) {
+      ziel.innerHTML = '<p class="hinweis" style="margin:0">Noch keine früheren Stände.</p>';
+      return;
+    }
+    antwort.verlauf.forEach((v) => {
+      const zeile = document.createElement('div');
+      zeile.className = 'verlaufzeile';
+      const d = new Date(v.zeit);
+      zeile.innerHTML = `<span>${d.toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' })}</span>`;
+      const b = document.createElement('button');
+      b.className = 'btn leise';
+      b.textContent = 'Zurückholen';
+      b.addEventListener('click', async () => {
+        if (!confirm('Diesen Stand wiederherstellen? Der aktuelle Stand wird vorher gesichert.')) return;
+        const a = await ruf('zurueck', { method: 'POST', body: JSON.stringify({ nr: v.nr }) });
+        if (a.ok) { daten = a.inhalte; ausfuellen(); verlaufLaden(); melden('Stand wiederhergestellt.', 'gut'); }
+        else melden(a.fehler || 'Ging nicht.', 'schlecht');
+      });
+      zeile.appendChild(b);
+      ziel.appendChild(zeile);
+    });
+  }
+
+  // ------------------------------------------------------------- Start
+  async function starten() {
+    const antwort = await ruf('inhalte');
+    if (antwort.status === 401) {
+      $('maske').hidden = true; $('anmeldung').hidden = false; $('code').focus();
+      return;
+    }
+    if (!antwort.ok || !antwort.inhalte) {
+      $('anmeldung').hidden = false;
+      $('anmeldefehler').textContent = antwort.fehler || 'Die Inhalte konnten nicht geladen werden.';
+      $('anmeldefehler').hidden = false;
+      return;
+    }
+    daten = antwort.inhalte;
+    $('anmeldung').hidden = true; $('maske').hidden = false;
+    ausfuellen();
+    verlaufLaden();
+    melden(antwort.gespeichert ? '' : 'Ausgangsstand — noch nichts über diese Maske gespeichert.');
+  }
+
+  starten();
+})();
+</script>
+</body>
+</html>
