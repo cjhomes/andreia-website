@@ -87,10 +87,9 @@ def fill(html):
                   html)
 
 body = open(os.path.join(BUILD, '_index_body.html'), encoding='utf-8').read()
-# Portraitfoto: liegt vorerst noch auf dem Wix-CDN, bis die Originaldatei da ist.
-WIX = 'https://static.wixstatic.com/media/a4ebd9_bc7e6a4cbae74e899b4db8d6202b84c5~mv2.jpg'
-HERO_IMG = WIX + '/v1/fill/w_900,h_1125,al_c,q_85/andreia-da-costa.jpg'
-ABOUT_IMG = WIX + '/v1/fill/w_760,h_950,al_t,q_85/andreia-da-costa.jpg'
+# Portraitfotos liegen jetzt im Repo (build/assets), nicht mehr auf dem Wix-CDN.
+HERO_IMG = 'assets/hero.jpg'
+ABOUT_IMG = 'assets/about.jpg'
 body = body.replace('{{IMG_HERO}}', HERO_IMG).replace('{{IMG_ABOUT}}', ABOUT_IMG)
 
 NAV = re.search(r'(<nav class="site">.*?</nav>)', body, re.S).group(1)
