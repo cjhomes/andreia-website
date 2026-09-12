@@ -116,9 +116,6 @@ IMPRESSUM = '''
       <p style="margin-top:1rem;">Telefon: <a href="tel:{{=kontakt.telefon_link}}">{{kontakt.telefon_anzeige}}</a><br>
       E-Mail: <a href="mailto:{{=kontakt.email}}">{{kontakt.email}}</a></p>
 
-      <h3 style="margin-top:2.2rem;">Umsatzsteuer</h3>
-      <p class="tbd" style="margin-top:1rem;" title="Von Andreia zu ergänzen: USt-IdNr. oder Kleinunternehmerregelung">{{impressum.umsatzsteuer}}</p>
-
       <h3 style="margin-top:2.2rem;">Berufsbezeichnung</h3>
       <p style="margin-top:1rem;">Zertifizierte Life &amp; Business Coach, hnc-Anwenderin (human neuro cybrainetics). Die Tätigkeit als Coach ist keine Heilbehandlung und ersetzt keine ärztliche oder psychotherapeutische Behandlung.</p>
 

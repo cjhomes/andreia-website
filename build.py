@@ -98,7 +98,6 @@ MAIN = body.split('</nav>', 1)[1].split('<footer>', 1)[0]
 # Der Teaser auf der Startseite führt auf die Unterseite, nicht auf sich selbst.
 MAIN = MAIN.replace('<a class="more" href="#finanzen">', '<a class="more" href="/finanzcoaching.html">')
 # Listen, die die Eingabemaske komplett austauschen darf
-MAIN = MAIN.replace('<ul class="dates">', '<ul class="dates" data-i-list="retreats">')
 MAIN = MAIN.replace('<ul class="pakete">', '<ul class="pakete" data-i-list="pakete">')
 MAIN = MAIN.replace('<div class="quotes-small">', '<div class="quotes-small" data-i-list="stimmen">')
 
@@ -132,7 +131,7 @@ def footer_for(page):
     return f
 
 
-def page(slug, title, description, content, noindex=True):
+def page(slug, title, description, content, noindex=False):
     robots = '\n<meta name="robots" content="noindex, nofollow">' if noindex else ''
     assets = 'assets' if slug == 'index' else '/assets'
     nav = nav_for(slug)
@@ -146,17 +145,11 @@ def page(slug, title, description, content, noindex=True):
 <title>{title}</title>
 <meta name="description" content="{description}">{robots}
 <link rel="icon" href="{assets}/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="{assets}/style.css?v=2">
+<link rel="preload" href="{assets}/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{assets}/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{assets}/style.css?v=3">
 </head>
 <body>
-<div class="draftbar">
-  <div class="wrap">
-    <span><strong>Entwurf</strong> — so könnte deine neue Seite aussehen.</span>
-    <span>Termine und Preise sind Beispielwerte.</span>
-  </div>
-</div>
 {nav}
 {content}
 {footer_for(slug)}

@@ -43,20 +43,7 @@
     }
   ],
   "pakete_hinweis": "Alle Pakete sind ab dem Kauf zwölf Monate lang einlösbar. Die Termine liegen so, wie es für dich passt.",
-  "retreats": [
-    {
-      "monat": "Mai 2027",
-      "ort": "Mallorca",
-      "text": "Ein langes Wochenende am Meer. Kleine Gruppe, viel Zeit, wenig Programm.",
-      "preis": "ab 690 €"
-    },
-    {
-      "monat": "Juni 2027",
-      "ort": "Lissabon",
-      "text": "Stadt, Licht und Meer — und ein Rahmen, in dem etwas in Bewegung kommt.",
-      "preis": "ab 590 €"
-    }
-  ],
+  "retreats": [],
   "stimmen": {
     "gross": {
       "zitat": "Sie hört nicht nur zu. Sie nimmt einen als ganzen Menschen wahr.",
@@ -90,5 +77,6 @@
   },
   "impressum": {
     "umsatzsteuer": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: wird ergänzt."
-  }
+  },
+  "retreats_hinweis": "Die nächsten Termine stehen noch nicht fest. Wer auf der Liste steht, erfährt es als Erstes — schreib mir einfach, dann melde ich mich, sobald ein Termin steht."
 }
