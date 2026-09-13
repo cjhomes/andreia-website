@@ -16,8 +16,8 @@ FINANZ = '''
     <p class="eyebrow">Warum ich das anbiete</p>
     <div class="col">
       <h2>Ich kenne beide Seiten von Geld.</h2>
-      <p style="margin-top:1.5rem;">Vor meiner Arbeit als Coach habe ich Privatkunden bei einer großen deutschen Bank beraten. Ich habe gesehen, mit welchen Fragen Menschen dorthin kommen — und wie oft sie mit dem Gefühl wieder gehen, etwas nicht verstanden zu haben, das sie eigentlich hätten verstehen dürfen.</p>
-      <p>Seit über einem Jahrzehnt baue ich außerdem mehrere Unternehmen mit Fokus Immobilien mit auf. Ich weiß also nicht nur, wie man über Vermögen spricht, sondern wie es sich anfühlt, welches aufzubauen: die Zweifel am Anfang, die langen Strecken ohne sichtbaren Fortschritt, die Entscheidungen, die man trifft, bevor man sicher ist.</p>
+      <p style="margin-top:1.5rem;">Vor meiner Arbeit als Coach habe ich Privatkunden bei einer großen Bank beraten. Ich habe gesehen, mit welchen Fragen Menschen dorthin kommen — und wie oft sie mit dem Gefühl wieder gehen, etwas nicht verstanden zu haben, das sie eigentlich hätten verstehen dürfen.</p>
+      <p>Daneben baue ich seit über zehn Jahren mehrere Immobilienunternehmen mit auf. Ich weiß also nicht nur, wie man über Vermögen spricht, sondern wie es sich anfühlt, eines aufzubauen: die Zweifel am Anfang, die langen Strecken ohne sichtbaren Fortschritt, die Entscheidungen, die man trifft, bevor man sicher ist.</p>
       <p>Was mich nicht loslässt, ist eine Beobachtung: Viele Menschen sind klug, arbeiten hart und verdienen gut — und wissen trotzdem nicht, wo ihr Geld eigentlich hingeht. Nicht aus Nachlässigkeit, sondern weil ihnen nie jemand gezeigt hat, dass sie sich das ansehen dürfen.</p>
     </div>
   </div>

@@ -1,7 +1,7 @@
 {
   "_hinweis": "Diese Datei enthält alles, was sich regelmäßig ändert. Später bearbeitet Andreia genau diese Felder über eine Eingabemaske.",
   "preise": {
-    "coaching": "120 €",
+    "coaching": "90 €",
     "coaching_dauer": "60 Minuten",
     "hnc": "110 €",
     "hnc_dauer": "1 Stunde",
@@ -21,7 +21,7 @@
       "name": "Einzelsitzung",
       "umfang": "60 Minuten · vor Ort oder online",
       "text": "Wenn gerade etwas akut ist und du kurzfristig jemanden brauchst, der mit dir daraufschaut. Ein Termin, ohne dass du dich auf mehr festlegst.",
-      "preis": "120 €"
+      "preis": "90 €"
     },
     {
       "name": "Innere Klarheit",
