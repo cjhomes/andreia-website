@@ -1,6 +1,87 @@
 # -*- coding: utf-8 -*-
 """Inhalte der Unterseiten."""
 
+HNC = '''
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Körperarbeit</p>
+    <h1 style="max-width:15ch;">Wenn Worte<br><em>nicht reichen.</em></h1>
+    <p class="lead">Manche Menschen erreicht man über das Gespräch. Andere über den Körper. Für den zweiten Weg arbeite ich mit hnc.</p>
+    <div class="horizon" aria-hidden="true"></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap reveal">
+    <p class="eyebrow">Was hnc ist</p>
+    <div class="col">
+      <h2>Eine ruhige, manuelle Arbeit am Nervensystem.</h2>
+      <p style="margin-top:1.5rem;">hnc steht für human neuro cybrainetics. Ich arbeite mit den Händen, sehr ruhig, an Punkten, über die das Nervensystem erreichbar ist. In der Arbeitsweise ist das vergleichbar mit Physiotherapie oder Osteopathie — nur dass es nicht um einen bestimmten Muskel oder ein bestimmtes Gelenk geht, sondern um die Spannung dahinter.</p>
+      <p>Menschen nehmen unterschiedlich auf: die einen über das Hören, die anderen über das Sehen, wieder andere über das Spüren. Wer im Gespräch nicht weiterkommt, kommt manchmal über den Körper an einen Punkt, den Worte nicht erreichen — weil sich dabei nichts erklären lässt und auch nichts erklärt werden muss.</p>
+      <p>Du bleibst dabei angezogen und ansprechbar. Es wird nichts eingerenkt, nichts gedehnt, nichts geknetet.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="band">
+  <div class="wrap reveal">
+    <p class="eyebrow">Wie eine Sitzung abläuft</p>
+    <h2 class="col">Eine Stunde, im Liegen.</h2>
+    <div class="steps" style="margin-top:56px;">
+      <div class="step">
+        <span class="n">Zu Beginn</span>
+        <h3>Kurzes Gespräch</h3>
+        <p>Du erzählst mir, was dich herführt und was körperlich gerade da ist. Das dauert ein paar Minuten, keine Anamnese, kein Fragebogen.</p>
+      </div>
+      <div class="step">
+        <span class="n">Dann</span>
+        <h3>Die Arbeit selbst</h3>
+        <p>Du liegst, ich arbeite mit den Händen. Die meisten werden dabei sehr ruhig. Manche schlafen ein. Reden musst du nicht.</p>
+      </div>
+      <div class="step">
+        <span class="n">Danach</span>
+        <h3>Zeit zum Ankommen</h3>
+        <p>Am Ende braucht es meist einen Moment. Ich sage dir, was mir aufgefallen ist, und wir schauen, ob eine zweite Sitzung sinnvoll ist.</p>
+      </div>
+    </div>
+    <p class="col" style="margin-top:2.4rem;color:var(--ink-soft);">Eine Grundbehandlung besteht in der Regel aus zwei Sitzungen — die zweite baut auf der ersten auf. Ob es danach weitergeht, entscheidest du.</p>
+    <p class="meta tbd" style="max-width:620px;margin-top:1.4rem;" title="Beispielpreis">Einzelsitzung · {{preise.hnc_dauer}} · vor Ort in Düsseldorf · {{preise.hnc}}</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap reveal">
+    <div class="hncbox">
+      <p class="eyebrow">Wichtig</p>
+      <h2 style="font-size:1.8rem;">Was hnc nicht ist.</h2>
+      <p style="margin-top:1.3rem;">hnc ist keine Heilbehandlung. Ich stelle keine Diagnosen, behandle keine Krankheiten und ersetze weder Ärztin noch Therapeut. Wenn etwas in ärztliche Hände gehört, sage ich dir das.</p>
+      <p>Ich verspreche auch keine Ergebnisse. Was ich anbiete, ist eine Stunde ruhige Arbeit und meine Aufmerksamkeit — was daraus entsteht, ist bei jedem anders.</p>
+    </div>
+  </div>
+</section>
+
+<section class="quotable">
+  <div class="wrap reveal">
+    <blockquote>Es gibt keine Wunderheilung, aber wer ein paar Themen in seinem „Rucksack des Lebens" mit sich herum schleppt, die kein traditioneller Doktor mit Skalpell und Tabletten lösen kann, ist hier an der richtigen Adresse!</blockquote>
+    <cite>Malte W. · Google-Rezension</cite>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <p class="eyebrow">Kontakt</p>
+    <h2>Am einfachsten probierst du es aus.</h2>
+    <p>Wenn du nicht weißt, ob das etwas für dich ist: schreib mir, dann klären wir das in fünf Minuten.</p>
+    <div class="actions">
+      <a class="btn" href="index.html#kontakt">Kostenloses Erstgespräch</a>
+      <a class="btn btn-quiet" href="index.html">Zurück zur Startseite</a>
+    </div>
+  </div>
+</section>
+'''
+
 FINANZ = '''
 <header class="hero">
   <div class="wrap">
@@ -179,6 +260,11 @@ DATENSCHUTZ = '''
 '''
 
 PAGES = {
+    'hnc': (
+        'Körperarbeit mit hnc — Andreia da Costa',
+        'hnc (human neuro cybrainetics) in Düsseldorf: ruhige, manuelle Arbeit am Nervensystem für alle, bei denen der Weg über den Körper führt.',
+        HNC,
+    ),
     'finanzcoaching': (
         'Finanzcoaching — Andreia da Costa',
         'Finanzcoaching in Düsseldorf: Überblick schaffen, erste Schritte beim Vermögensaufbau, bestehendes Vermögen ordnen. Keine Anlageberatung.',
