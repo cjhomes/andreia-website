@@ -6,6 +6,10 @@
       "titel": "Andreia da Costa — Live authentically, act with clarity",
       "beschreibung": "Life &amp; business coaching, hnc and retreats in Düsseldorf. A space where you’re seen."
     },
+    "hnc": {
+      "titel": "Bodywork with hnc — Andreia da Costa",
+      "beschreibung": "hnc (human neuro cybrainetics) in Düsseldorf: quiet, hands-on work with the nervous system, for those whose way in is through the body."
+    },
     "finanzcoaching": {
       "titel": "Financial coaching — Andreia da Costa",
       "beschreibung": "Financial coaching in Düsseldorf: getting an overview, first steps in building wealth, putting what already exists in order. Not investment advice."
@@ -137,7 +141,41 @@
     "Der erste Schritt ist ein Gespräch, kein Kontoauszug.": "The first step is a conversation, not a bank statement.",
     "Du musst nichts vorbereiten und nichts offenlegen, bevor du weißt, ob es passt.": "You don’t have to prepare anything or disclose anything before you know whether it’s a fit.",
     "Zurück zur Startseite": "Back to the home page",
-    "title=\"Beispielwert — wird gemeinsam festgelegt\"": "title=\"Example figure — agreed together\""
+    "title=\"Beispielwert — wird gemeinsam festgelegt\"": "title=\"Example figure — agreed together\"",
+    "Zu mir kommt man auf zwei Wegen. Die meisten über das Gespräch. Und manche über den Körper, weil nicht jeder Mensch über Worte erreichbar ist und sich manches leichter löst, wenn man es nicht erklären muss. Beides gehört bei mir zusammen; was zu dir passt, finden wir gemeinsam heraus.": "People come to me by two routes. Most through conversation. And some through the body, because not everyone can be reached through words and some things come loose more easily when you don’t have to explain them. With me the two belong together; which one suits you, we work out between us.",
+    ">Der zweite Weg<": ">The second route<",
+    "<h2>Wenn Worte nicht reichen.</h2>": "<h2>When words aren’t enough.</h2>",
+    "Manches lässt sich nicht bereden. Nicht, weil man nicht wollte, sondern weil es keine Worte dafür gibt — oder weil sie an der Sache vorbeigehen.": "Some things can’t be talked through. Not because you wouldn’t want to, but because there are no words for them — or because the words miss the point.",
+    "Dann arbeite ich mit den Händen. <em>hnc</em> ist eine ruhige, manuelle Arbeit am Nervensystem, in der Arbeitsweise vergleichbar mit Physiotherapie oder Osteopathie. Du liegst, du bleibst angezogen, du musst nichts erklären.": "Then I work with my hands. <em>hnc</em> is quiet, hands-on work with the nervous system, close in approach to physiotherapy or osteopathy. You lie down, you stay dressed, you don’t have to explain anything.",
+    "Eine Stunde, vor Ort in Düsseldorf. Eine Grundbehandlung sind meist zwei Sitzungen.": "One hour, in person in Düsseldorf. A basic course is usually two sessions.",
+    ">Mehr zu hnc</a>": ">More on hnc</a>",
+    "alt=\"hnc — ruhige Arbeit am Nervensystem\"": "alt=\"hnc — quiet work with the nervous system\"",
+    ">Körperarbeit<": ">Bodywork<",
+    "Wenn Worte<br><em>nicht reichen.</em>": "When words<br><em>aren’t enough.</em>",
+    "Manche Menschen erreicht man über das Gespräch. Andere über den Körper. Für den zweiten Weg arbeite ich mit hnc.": "Some people are reached through conversation. Others through the body. For the second route I work with hnc.",
+    "Was hnc ist": "What hnc is",
+    "Eine ruhige, manuelle Arbeit am Nervensystem.": "Quiet, hands-on work with the nervous system.",
+    "hnc steht für human neuro cybrainetics. Ich arbeite mit den Händen, sehr ruhig, an Punkten, über die das Nervensystem erreichbar ist. In der Arbeitsweise ist das vergleichbar mit Physiotherapie oder Osteopathie — nur dass es nicht um einen bestimmten Muskel oder ein bestimmtes Gelenk geht, sondern um die Spannung dahinter.": "hnc stands for human neuro cybrainetics. I work with my hands, very quietly, at points through which the nervous system can be reached. In approach it is close to physiotherapy or osteopathy — except that it isn’t about a particular muscle or a particular joint, but about the tension behind it.",
+    "Menschen nehmen unterschiedlich auf: die einen über das Hören, die anderen über das Sehen, wieder andere über das Spüren. Wer im Gespräch nicht weiterkommt, kommt manchmal über den Körper an einen Punkt, den Worte nicht erreichen — weil sich dabei nichts erklären lässt und auch nichts erklärt werden muss.": "People take things in differently: some through hearing, some through seeing, others through feeling. When talking gets you nowhere, the body sometimes reaches a place that words don’t — because nothing there can be explained, and nothing has to be.",
+    "Du bleibst dabei angezogen und ansprechbar. Es wird nichts eingerenkt, nichts gedehnt, nichts geknetet.": "You stay dressed and awake throughout. Nothing is clicked into place, nothing is stretched, nothing is kneaded.",
+    "Eine Stunde, im Liegen.": "One hour, lying down.",
+    ">Zu Beginn<": ">At the start<",
+    ">Danach<": ">Afterwards<",
+    "<h3>Kurzes Gespräch</h3>": "<h3>A short conversation</h3>",
+    "<h3>Die Arbeit selbst</h3>": "<h3>The work itself</h3>",
+    "<h3>Zeit zum Ankommen</h3>": "<h3>Time to land</h3>",
+    "Du erzählst mir, was dich herführt und was körperlich gerade da ist. Das dauert ein paar Minuten, keine Anamnese, kein Fragebogen.": "You tell me what brings you here and what is going on in your body. That takes a few minutes — no case history, no questionnaire.",
+    "Du liegst, ich arbeite mit den Händen. Die meisten werden dabei sehr ruhig. Manche schlafen ein. Reden musst du nicht.": "You lie down, I work with my hands. Most people go very quiet. Some fall asleep. You don’t have to talk.",
+    "Am Ende braucht es meist einen Moment. Ich sage dir, was mir aufgefallen ist, und wir schauen, ob eine zweite Sitzung sinnvoll ist.": "At the end most people need a moment. I tell you what I noticed, and we look at whether a second session makes sense.",
+    "Eine Grundbehandlung besteht in der Regel aus zwei Sitzungen — die zweite baut auf der ersten auf. Ob es danach weitergeht, entscheidest du.": "A basic course is usually two sessions — the second builds on the first. Whether it goes on after that is your decision.",
+    ">Einzelsitzung · {{preise.hnc_dauer}} · vor Ort in Düsseldorf · {{preise.hnc}}<": ">Single session · {{preise.hnc_dauer}} · in person in Düsseldorf · {{preise.hnc}}<",
+    "Was hnc nicht ist.": "What hnc is not.",
+    "hnc ist keine Heilbehandlung. Ich stelle keine Diagnosen, behandle keine Krankheiten und ersetze weder Ärztin noch Therapeut. Wenn etwas in ärztliche Hände gehört, sage ich dir das.": "hnc is not medical treatment. I make no diagnoses, I treat no illnesses, and I am no substitute for a doctor or a therapist. If something belongs in medical hands, I’ll tell you so.",
+    "Ich verspreche auch keine Ergebnisse. Was ich anbiete, ist eine Stunde ruhige Arbeit und meine Aufmerksamkeit — was daraus entsteht, ist bei jedem anders.": "Nor do I promise results. What I offer is an hour of quiet work and my full attention — what comes of it is different for everyone.",
+    "Es gibt keine Wunderheilung, aber wer ein paar Themen in seinem „Rucksack des Lebens\" mit sich herum schleppt, die kein traditioneller Doktor mit Skalpell und Tabletten lösen kann, ist hier an der richtigen Adresse!": "There is no miracle cure, but anyone carrying a few things around in their “rucksack of life” that no traditional doctor can fix with a scalpel and pills has come to the right place!",
+    "Malte W. · Google-Rezension": "Malte W. · Google review",
+    "Am einfachsten probierst du es aus.": "The simplest thing is to try it.",
+    "Wenn du nicht weißt, ob das etwas für dich ist: schreib mir, dann klären wir das in fünf Minuten.": "If you don’t know whether this is for you: write to me and we’ll settle it in five minutes."
   },
   "werte": {
     "60 Minuten": "60 minutes",
