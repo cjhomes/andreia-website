@@ -283,7 +283,9 @@
     .navlinks{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;gap:18px;}
     .navlinks::-webkit-scrollbar{display:none;}
     .navlinks a{white-space:nowrap;}
-    .langs{display:none;}
+    /* Die Sprachwahl bleibt auch auf dem Handy sichtbar — sie gehoert zum
+       Angebot, nicht zur Zierde. Sie laeuft am Ende der Navigationszeile mit. */
+    .langs{flex:none;white-space:nowrap;}
     .draftbar .wrap{gap:.2rem 1rem;}
   }
 
