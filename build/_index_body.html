@@ -229,8 +229,12 @@
         <a class="btn btn-quiet" href="https://wa.me/4917656834140" rel="noopener">Lieber über WhatsApp</a>
       </div>
       <p class="kstatus" id="kstatus" role="status" aria-live="polite"></p>
+      <p class="small" style="margin-top:.9rem;font-size:.82rem;color:var(--ink-mute);">Der Knopf öffnet dein E-Mail-Programm mit der fertigen Nachricht — abschicken musst du sie dort noch selbst.</p>
     </form>
 <script>
+/* Das Formular stellt die Nachricht zusammen und übergibt sie an das
+   E-Mail-Programm des Besuchers. Kein fremder Dienst, keine Speicherung
+   bei einem Dritten — die Anfrage kommt als ganz normale E-Mail an. */
 (function(){
   var f = document.getElementById('kform');
   if (!f) return;
@@ -239,33 +243,14 @@
   f.addEventListener('submit', function (ev) {
     ev.preventDefault();
     if (!f.reportValidity()) return;
-    var knopf = f.querySelector('button[type=submit]');
-    knopf.disabled = true;
-    s.className = 'kstatus';
-    s.textContent = 'Wird gesendet …';
-    fetch('/kontakt', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({
-        name: e['name'].value, email: e['email'].value,
-        nachricht: e['nachricht'].value, webseite: e['webseite'].value,
-        einverstanden: e['einverstanden'].checked
-      })
-    }).then(function (r) {
-      return r.json().catch(function () { return {}; });
-    }).then(function (r) {
-      if (r && r.ok) {
-        f.reset();
-        s.className = 'kstatus gut';
-        s.textContent = 'Danke — deine Nachricht ist angekommen. Ich melde mich, meist innerhalb von zwei Tagen.';
-      } else {
-        s.className = 'kstatus schlecht';
-        s.textContent = (r && r.fehler) || 'Das hat leider nicht geklappt. Schreib mir gern über WhatsApp.';
-      }
-    }).catch(function () {
-      s.className = 'kstatus schlecht';
-      s.textContent = 'Das hat leider nicht geklappt. Schreib mir gern über WhatsApp.';
-    }).then(function () { knopf.disabled = false; });
+    if (e['webseite'].value) return;
+    var betreff = 'Anfrage über die Website — ' + e['name'].value;
+    var text = e['nachricht'].value + '\n\n--\nName: ' + e['name'].value +
+               '\nE-Mail: ' + e['email'].value;
+    s.className = 'kstatus gut';
+    s.textContent = 'Dein E-Mail-Programm öffnet sich mit der fertigen Nachricht.';
+    window.location.href = 'mailto:{{=kontakt.email}}?subject=' +
+      encodeURIComponent(betreff) + '&body=' + encodeURIComponent(text);
   });
 })();
 </script>
