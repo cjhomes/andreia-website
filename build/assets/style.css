@@ -84,6 +84,9 @@
   .frame{overflow:hidden;background:var(--surface);}
   .hero .frame{aspect-ratio:4/5;}
   .about .frame{aspect-ratio:4/5;}
+  /* Das Retreat-Bild ist eine Raumaufnahme im Querformat — im Hochformat
+     bliebe vom Raum nichts übrig. */
+  #retreats .frame{aspect-ratio:16/9;}
   .seal{width:74px;height:auto;border-radius:50%;opacity:.9;}
 
   /* Foto-Platzhalter */
