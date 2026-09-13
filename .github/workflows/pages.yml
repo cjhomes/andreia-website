@@ -31,6 +31,9 @@ jobs:
       - name: Eingabemaske und Ausgangsstand nicht veroeffentlichen
         run: rm -rf site/admin site/_inhalte.json
 
+      - name: Eigene Adresse hinterlegen
+        run: echo 'andreiadacosta.de' > site/CNAME
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
