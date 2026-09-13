@@ -96,29 +96,33 @@ NAV = re.search(r'(<nav class="site">.*?</nav>)', body, re.S).group(1)
 FOOTER = re.search(r'(<footer>.*?</footer>)', body, re.S).group(1)
 MAIN = body.split('</nav>', 1)[1].split('<footer>', 1)[0]
 # Der Teaser auf der Startseite führt auf die Unterseite, nicht auf sich selbst.
-MAIN = MAIN.replace('<a class="more" href="#finanzen">', '<a class="more" href="/finanzcoaching.html">')
+MAIN = MAIN.replace('<a class="more" href="#finanzen">', '<a class="more" href="finanzcoaching.html">')
 # Listen, die die Eingabemaske komplett austauschen darf
 MAIN = MAIN.replace('<ul class="pakete">', '<ul class="pakete" data-i-list="pakete">')
 MAIN = MAIN.replace('<div class="quotes-small">', '<div class="quotes-small" data-i-list="stimmen">')
 
 
 def nav_for(page):
-    """Navigation mit absoluten Zielen, damit sie auf Unterseiten funktioniert."""
+    """Navigation mit relativen Zielen — alle Seiten liegen nebeneinander.
+
+    Relativ statt absolut, damit die Seite unter jeder Adresse funktioniert:
+    eigene Domain, Testadresse in einem Unterordner, örtliche Vorschau.
+    """
     n = NAV
     if page != 'index':
         for anchor in ('fuerwen', 'angebot', 'retreats', 'ueber', 'ablauf', 'stimmen', 'kontakt'):
-            n = n.replace(f'href="#{anchor}"', f'href="/#{anchor}"')
-        n = n.replace('href="#finanzen"', 'href="/finanzcoaching.html"')
-        n = n.replace('class="brand" href="#"', 'class="brand" href="/"')
+            n = n.replace(f'href="#{anchor}"', f'href="index.html#{anchor}"')
+        n = n.replace('href="#finanzen"', 'href="finanzcoaching.html"')
+        n = n.replace('class="brand" href="#"', 'class="brand" href="index.html"')
     else:
-        n = n.replace('href="#finanzen"', 'href="/finanzcoaching.html"')
+        n = n.replace('href="#finanzen"', 'href="finanzcoaching.html"')
     return n
 
 
 def footer_for(page):
     f = FOOTER
-    f = f.replace('<a href="#kontakt">Impressum</a>', '<a href="/impressum.html">Impressum</a>')
-    f = f.replace('<a href="#kontakt">Datenschutz</a>', '<a href="/datenschutz.html">Datenschutz</a>')
+    f = f.replace('<a href="#kontakt">Impressum</a>', '<a href="impressum.html">Impressum</a>')
+    f = f.replace('<a href="#kontakt">Datenschutz</a>', '<a href="datenschutz.html">Datenschutz</a>')
     f = f.replace('<br>\n          <a href="#kontakt">AGB</a>', '')
     f = f.replace('<a href="#kontakt">{{kontakt.email}}</a>',
                   '<a href="mailto:{{=kontakt.email}}">{{kontakt.email}}</a>')
@@ -126,17 +130,13 @@ def footer_for(page):
                   '<a href="tel:{{=kontakt.telefon_link}}">{{kontakt.telefon_anzeige}}</a>')
     f = f.replace('<a href="#kontakt">Instagram</a>',
                   '<a href="{{=kontakt.instagram}}" rel="noopener">Instagram</a>')
-    if page != 'index':
-        f = f.replace('src="assets/', 'src="/assets/')
     return f
 
 
 def page(slug, title, description, content, noindex=False):
     robots = '\n<meta name="robots" content="noindex, nofollow">' if noindex else ''
-    assets = 'assets' if slug == 'index' else '/assets'
+    assets = 'assets'
     nav = nav_for(slug)
-    if slug != 'index':
-        nav = nav.replace('src="assets/', 'src="/assets/')
     html = f'''<!doctype html>
 <html lang="de">
 <head>

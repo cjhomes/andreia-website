@@ -96,8 +96,8 @@ FINANZ = '''
     <h2>Der erste Schritt ist ein Gespräch, kein Kontoauszug.</h2>
     <p>Du musst nichts vorbereiten und nichts offenlegen, bevor du weißt, ob es passt.</p>
     <div class="actions">
-      <a class="btn" href="/#kontakt">Kostenloses Erstgespräch</a>
-      <a class="btn btn-quiet" href="/">Zurück zur Startseite</a>
+      <a class="btn" href="index.html#kontakt">Kostenloses Erstgespräch</a>
+      <a class="btn btn-quiet" href="index.html">Zurück zur Startseite</a>
     </div>
   </div>
 </section>
@@ -131,7 +131,7 @@ IMPRESSUM = '''
       <h3 style="margin-top:2.2rem;">Bildnachweis</h3>
       <p style="margin-top:1rem;">Alle Fotografien: privat. Logo: Andreia da Costa.</p>
     </div>
-    <div class="actions"><a class="btn btn-quiet" href="/">Zurück zur Startseite</a></div>
+    <div class="actions"><a class="btn btn-quiet" href="index.html">Zurück zur Startseite</a></div>
   </div>
 </section>
 '''
@@ -173,7 +173,7 @@ DATENSCHUTZ = '''
 
       <p style="margin-top:2.4rem;font-size:.88rem;color:var(--ink-mute);">Stand: August 2026</p>
     </div>
-    <div class="actions"><a class="btn btn-quiet" href="/">Zurück zur Startseite</a></div>
+    <div class="actions"><a class="btn btn-quiet" href="index.html">Zurück zur Startseite</a></div>
   </div>
 </section>
 '''
