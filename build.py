@@ -28,8 +28,8 @@ LOGO = open(os.path.join(BUILD, 'assets', 'logo.svg')).read().strip()
 # GSC_TAG: der Inhalt des Bestätigungs-Tags der Google Search Console
 #   (Methode "HTML-Tag"). Landet nur auf der deutschen Startseite.
 # ---------------------------------------------------------------------------
-CF_TOKEN = ''
-GSC_TAG = ''
+CF_TOKEN = '52d161530c5040cf802b4d859bafabd1'
+GSC_TAG = 'FTQ3ro5cEhTj050kJCkvF6vvBNR89VTQhUp0Cc3ze54'
 
 DOMAIN = 'andreiadacosta.de'
 # Kennung von Andreias Google-Unternehmensprofil (Google Maps).
@@ -371,8 +371,11 @@ def messung_html():
     """Cloudflare Web Analytics. Leerer Token = kein Skript auf der Seite."""
     if not CF_TOKEN:
         return ''
-    return ('\n<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
-            'data-cf-beacon=\'{"token": "' + CF_TOKEN + '"}\'></script>')
+    # Genau der Schnipsel, den Cloudflare ausgibt.
+    return ('\n<!-- Cloudflare Web Analytics --><script type="module" '
+            'src="https://static.cloudflareinsights.com/beacon.min.js" '
+            'data-cf-beacon=\'{"token": "' + CF_TOKEN + '"}\'></script>'
+            '<!-- End Cloudflare Web Analytics -->')
 
 
 def gsc_html(slug, code):
