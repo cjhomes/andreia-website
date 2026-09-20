@@ -390,6 +390,90 @@ TEXTE = [
 # ---------------------------------------------------------------------------
 # Werte aus inhalte.json: (deutsch, englisch, portugiesisch)
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Fragen und Antworten (eigene Seite)
+# ---------------------------------------------------------------------------
+TEXTE += [
+    ('Fragen und Antworten', 'Questions and answers', 'Perguntas frequentes'),
+    ('Was Menschen<br><em>vorher wissen wollen.</em>',
+     'What people<br><em>want to know first.</em>',
+     'O que as pessoas<br><em>querem saber antes.</em>'),
+    ('Die Fragen, die mir am häufigsten gestellt werden — offen beantwortet, damit du nicht erst anrufen musst, um sie zu klären.',
+     'The questions I’m asked most often, answered openly — so you don’t have to call just to find out.',
+     'As perguntas que mais me fazem, respondidas às claras — para não teres de telefonar só para saber.'),
+
+    ('Was kostet ein Coaching bei dir?', 'What does coaching with you cost?',
+     'Quanto custa um coaching contigo?'),
+    ('Das Erstgespräch ist kostenlos und dauert 30 Minuten. Eine einzelne Sitzung kostet {{preise.coaching}} für {{preise.coaching_dauer}}. Wer länger mit mir arbeiten möchte, nimmt ein Paket mit vier, acht oder sechzehn Sitzungen — alle Preise stehen offen auf der <a href="index.html#pakete">Startseite</a>. Pakete sind ab dem Kauf zwölf Monate lang einlösbar.',
+     'The first conversation is free and lasts 30 minutes. A single session costs {{preise.coaching}} for {{preise.coaching_dauer}}. If you want to work with me for longer, you take a package of four, eight or sixteen sessions — all prices are set out openly on the <a href="index.html#pakete">home page</a>. Packages can be used up over twelve months from the date of purchase.',
+     'A primeira conversa é gratuita e dura 30 minutos. Uma sessão individual custa {{preise.coaching}} por {{preise.coaching_dauer}}. Quem quiser um acompanhamento mais longo escolhe um pacote de quatro, oito ou dezasseis sessões — os preços estão todos à vista na <a href="index.html#pakete">página inicial</a>. Os pacotes podem ser usados ao longo de doze meses a contar da compra.'),
+
+    ('Wie läuft das erste Gespräch ab?', 'What happens in the first conversation?',
+     'Como é a primeira conversa?'),
+    ('Telefonisch oder online, 30 Minuten, kostenlos und unverbindlich. Du erzählst mir, worum es geht, und wir schauen gemeinsam, was du brauchst. Danach entscheidest du in Ruhe, ob und wie es weitergeht.',
+     'By phone or online, 30 minutes, free and without obligation. You tell me what it’s about and we look together at what you need. Afterwards you decide in your own time whether and how to go on.',
+     'Por telefone ou online, 30 minutos, gratuita e sem compromisso. Contas-me do que se trata e vemos juntos do que precisas. Depois decides com calma se queres continuar e como.'),
+
+    ('Muss ich mich vorbereiten?', 'Do I need to prepare anything?',
+     'Preciso de preparar alguma coisa?'),
+    ('Nein. Du brauchst keine Unterlagen, keine Vorgeschichte und keine fertige Frage. Die meisten wissen vor dem ersten Termin gar nicht genau, was sie erwartet — das ist völlig in Ordnung.',
+     'No. You need no documents, no backstory and no finished question. Most people have no clear idea what to expect before the first session — that’s perfectly fine.',
+     'Não. Não precisas de documentos, de uma história pronta nem de uma pergunta bem formulada. A maioria não sabe ao certo o que a espera na primeira sessão — e isso não é problema nenhum.'),
+
+    ('Wie viele Sitzungen brauche ich?', 'How many sessions will I need?',
+     'De quantas sessões vou precisar?'),
+    ('Das entscheiden wir nach dem Erstgespräch gemeinsam. In einem einzelnen Termin verändert sich selten wirklich etwas, deshalb arbeite ich meistens über einen Zeitraum. Wie lang dieser Zeitraum ist, bestimmst du mit.',
+     'We decide that together after the first conversation. A single session rarely changes much, so I usually work over a stretch of time. How long that stretch is, you help decide.',
+     'Decidimos isso juntos depois da primeira conversa. Numa sessão isolada raramente muda alguma coisa a sério, por isso costumo trabalhar ao longo de algum tempo. Quanto tempo, decides tu também.'),
+
+    ('Ist Coaching dasselbe wie Therapie?', 'Is coaching the same as therapy?',
+     'Coaching é o mesmo que terapia?'),
+    ('Nein. Coaching ersetzt keine ärztliche oder psychotherapeutische Behandlung, und ich stelle keine Diagnosen. In der Therapie geht es oft um die Aufarbeitung von etwas Vergangenem; bei mir geht es um Klarheit über das, was jetzt ist, und über deine nächsten Schritte. Wenn ich merke, dass etwas in ärztliche oder therapeutische Hände gehört, sage ich dir das offen.',
+     'No. Coaching is not a substitute for medical or psychotherapeutic treatment, and I don’t diagnose. Therapy often works through something from the past; with me it’s about clarity on what is happening now and on your next steps. If I see that something belongs in medical or therapeutic hands, I’ll tell you so plainly.',
+     'Não. O coaching não substitui tratamento médico ou psicoterapêutico e eu não faço diagnósticos. A terapia trabalha muitas vezes o que ficou do passado; comigo trata-se de ganhar clareza sobre o que se passa agora e sobre os próximos passos. Se vir que algo pertence a mãos médicas ou terapêuticas, digo-te com toda a franqueza.'),
+
+    ('Findet das in Düsseldorf statt oder online?', 'Does this happen in Düsseldorf or online?',
+     'Isto é em Düsseldorf ou online?'),
+    ('Beides. Wir sehen uns in meinen Räumen in Düsseldorf, oder wir machen es online, wenn dir das lieber ist oder der Weg zu weit wäre. hnc geht nur vor Ort, weil ich dabei mit den Händen arbeite.',
+     'Both. We meet in my rooms in Düsseldorf, or we do it online if you prefer that or the journey would be too far. hnc only works in person, because I work with my hands.',
+     'As duas coisas. Encontramo-nos no meu espaço em Düsseldorf, ou fazemos online se preferires ou se a viagem for longa de mais. O hnc só é possível presencialmente, porque trabalho com as mãos.'),
+
+    ('In welchen Sprachen arbeitest du?', 'Which languages do you work in?',
+     'Em que línguas trabalhas?'),
+    ('Auf Deutsch, Englisch und Portugiesisch. Über Gefühle spricht man am ehrlichsten in der Sprache, in der man denkt — du musst dich bei mir nicht erst übersetzen.',
+     'German, English and Portuguese. People speak most honestly about feelings in the language they think in — with me you don’t have to translate yourself first.',
+     'Alemão, inglês e português. Fala-se dos sentimentos com mais verdade na língua em que se pensa — comigo não tens de te traduzir primeiro.'),
+
+    ('Was ist hnc?', 'What is hnc?', 'O que é o hnc?'),
+    ('hnc steht für human neuro cybrainetics: eine ruhige, manuelle Arbeit am Nervensystem, in der Arbeitsweise vergleichbar mit Physiotherapie oder Osteopathie. Du liegst, bleibst angezogen und musst nichts erklären. Eine Sitzung dauert {{preise.hnc_dauer}} und kostet {{preise.hnc}}; eine Grundbehandlung sind meist zwei Sitzungen. hnc ist keine Heilbehandlung — ich behandle keine Krankheiten und verspreche keine Ergebnisse. <a href="hnc.html">Mehr dazu hier.</a>',
+     'hnc stands for human neuro cybrainetics: quiet, hands-on work with the nervous system, close in approach to physiotherapy or osteopathy. You lie down, stay dressed and don’t have to explain anything. A session lasts {{preise.hnc_dauer}} and costs {{preise.hnc}}; a basic course is usually two sessions. hnc is not a medical treatment — I don’t treat illnesses and I promise no results. <a href="hnc.html">More about it here.</a>',
+     'hnc significa human neuro cybrainetics: um trabalho manual e calmo com o sistema nervoso, com uma abordagem próxima da fisioterapia ou da osteopatia. Ficas deitado, vestido, e não tens de explicar nada. Uma sessão dura {{preise.hnc_dauer}} e custa {{preise.hnc}}; um tratamento de base são normalmente duas sessões. O hnc não é um tratamento médico — não trato doenças e não prometo resultados. <a href="hnc.html">Sabe mais aqui.</a>'),
+
+    ('Ist Finanzcoaching eine Anlageberatung?', 'Is financial coaching investment advice?',
+     'O coaching financeiro é consultoria de investimentos?'),
+    ('Nein. Ich verkaufe keine Produkte, empfehle keine Papiere und vermittle nichts. Es geht darum, dass du deine eigenen Zahlen verstehst und selbst entscheiden kannst. Eine Sitzung dauert {{preise.finanzcoaching_dauer}} und kostet {{preise.finanzcoaching}}. <a href="finanzcoaching.html">Mehr dazu hier.</a>',
+     'No. I sell no products, recommend no securities and broker nothing. The point is that you understand your own numbers and can decide for yourself. A session lasts {{preise.finanzcoaching_dauer}} and costs {{preise.finanzcoaching}}. <a href="finanzcoaching.html">More about it here.</a>',
+     'Não. Não vendo produtos, não recomendo títulos e não faço intermediação. A ideia é que percebas as tuas próprias contas e possas decidir por ti. Uma sessão dura {{preise.finanzcoaching_dauer}} e custa {{preise.finanzcoaching}}. <a href="finanzcoaching.html">Sabe mais aqui.</a>'),
+
+    ('Was sind die Retreats?', 'What are the retreats?', 'O que são os retiros?'),
+    ('Ein Wochenende heraus aus dem Alltag, in kleiner Gruppe, {{preise.retreat_ab}}. Kein Programm, das abgearbeitet wird, sondern Zeit, Stille und ein Rahmen, in dem sich etwas lösen darf. Die nächsten Termine stehen noch nicht fest — wer auf der Liste steht, erfährt es als Erstes.',
+     'A weekend away from everyday life, in a small group, {{preise.retreat_ab}}. Not a programme to work through, but time, quiet and room for something to loosen. The next dates aren’t fixed yet — whoever is on the list hears first.',
+     'Um fim de semana longe do quotidiano, em pequeno grupo, {{preise.retreat_ab}}. Não um programa a cumprir, mas tempo, silêncio e espaço para algo se soltar. As próximas datas ainda não estão marcadas — quem estiver na lista é o primeiro a saber.'),
+
+    ('Bleibt das, was ich erzähle, unter uns?', 'Does what I say stay between us?',
+     'O que eu contar fica entre nós?'),
+    ('Ja. Alles, was in einem Coaching oder einer hnc-Sitzung besprochen wird, bleibt zwischen uns. Ich gebe keine Inhalte an Dritte weiter.',
+     'Yes. Everything discussed in a coaching or hnc session stays between us. I pass nothing on to anyone else.',
+     'Sim. Tudo o que é falado numa sessão de coaching ou de hnc fica entre nós. Não passo nada a terceiros.'),
+
+    ('Deine Frage steht nicht dabei?', 'Your question isn’t here?',
+     'A tua pergunta não está aqui?'),
+    ('Dann schreib sie mir einfach. Ich antworte selbst, und es kostet dich nichts.',
+     'Then just write it to me. I answer myself, and it costs you nothing.',
+     'Então escreve-a. Respondo eu própria, e não te custa nada.'),
+]
+
+
 WERTE = [
     ('60 Minuten', '60 minutes', '60 minutos'),
     ('1 Stunde', '1 hour', '1 hora'),
@@ -466,27 +550,35 @@ PAKET_TEXTE = {
 
 SEITEN = {
     'index': {
-        'de': ('Andreia da Costa — Authentisch leben, klar handeln',
-               'Life &amp; Business Coaching, hnc und Retreats in Düsseldorf. Ein Raum, in dem du gesehen wirst.'),
-        'en': ('Andreia da Costa — Live authentically, act with clarity',
-               'Life &amp; business coaching, hnc and retreats in Düsseldorf. A space where you’re seen.'),
-        'pt': ('Andreia da Costa — Viver com autenticidade, agir com clareza',
-               'Life &amp; Business Coaching, hnc e retiros em Düsseldorf. Um espaço onde há lugar para quem és.'),
+        'de': ('Life &amp; Business Coaching in Düsseldorf — Andreia da Costa',
+               'Life &amp; Business Coaching in Düsseldorf und online: Einzelcoaching, hnc, Finanzcoaching und Retreats. Erstgespräch kostenlos.'),
+        'en': ('Life &amp; Business Coaching in Düsseldorf — Andreia da Costa',
+               'Life &amp; business coaching in Düsseldorf and online: one-to-one coaching, hnc, financial coaching and retreats. First conversation free.'),
+        'pt': ('Life &amp; Business Coaching em Düsseldorf — Andreia da Costa',
+               'Life &amp; Business Coaching em Düsseldorf e online: sessões individuais, hnc, coaching financeiro e retiros. Primeira conversa gratuita.'),
     },
     'hnc': {
-        'de': ('Körperarbeit mit hnc — Andreia da Costa',
+        'de': ('hnc in Düsseldorf — Körperarbeit mit Andreia da Costa',
                'hnc (human neuro cybrainetics) in Düsseldorf: ruhige, manuelle Arbeit am Nervensystem für alle, bei denen der Weg über den Körper führt.'),
-        'en': ('Bodywork with hnc — Andreia da Costa',
+        'en': ('hnc in Düsseldorf — bodywork with Andreia da Costa',
                'hnc (human neuro cybrainetics) in Düsseldorf: quiet, hands-on work with the nervous system, for those whose way in is through the body.'),
-        'pt': ('Trabalho corporal com hnc — Andreia da Costa',
+        'pt': ('hnc em Düsseldorf — trabalho corporal com Andreia da Costa',
                'hnc (human neuro cybrainetics) em Düsseldorf: trabalho manual e calmo com o sistema nervoso, para quem o caminho passa pelo corpo.'),
     },
+    'fragen': {
+        'de': ('Fragen und Antworten zum Coaching — Andreia da Costa',
+               'Was kostet ein Coaching in Düsseldorf, wie läuft das Erstgespräch ab, worin unterscheidet es sich von Therapie, was ist hnc — die häufigsten Fragen, offen beantwortet.'),
+        'en': ('Questions and answers about coaching — Andreia da Costa',
+               'What does coaching in Düsseldorf cost, how does the first conversation work, how is it different from therapy, what is hnc — the most common questions, answered openly.'),
+        'pt': ('Perguntas frequentes sobre coaching — Andreia da Costa',
+               'Quanto custa um coaching em Düsseldorf, como é a primeira conversa, em que difere da terapia, o que é o hnc — as perguntas mais comuns, respondidas às claras.'),
+    },
     'finanzcoaching': {
-        'de': ('Finanzcoaching — Andreia da Costa',
+        'de': ('Finanzcoaching in Düsseldorf — Andreia da Costa',
                'Finanzcoaching in Düsseldorf: Überblick schaffen, erste Schritte beim Vermögensaufbau, bestehendes Vermögen ordnen. Keine Anlageberatung.'),
-        'en': ('Financial coaching — Andreia da Costa',
+        'en': ('Financial coaching in Düsseldorf — Andreia da Costa',
                'Financial coaching in Düsseldorf: getting an overview, first steps in building wealth, putting what already exists in order. Not investment advice.'),
-        'pt': ('Coaching financeiro — Andreia da Costa',
+        'pt': ('Coaching financeiro em Düsseldorf — Andreia da Costa',
                'Coaching financeiro em Düsseldorf: ganhar uma visão geral, primeiros passos na construção de património, pôr em ordem o que já existe. Não é consultoria de investimentos.'),
     },
 }

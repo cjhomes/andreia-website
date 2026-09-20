@@ -12,13 +12,28 @@ build/sprache-en.json und build/sprache-pt.json zwei Wörterbücher:
 die Angaben aus inhalte.json. Was dort nicht steht, bleibt deutsch — deshalb
 meldet der Bau am Ende, wenn eine Übersetzung fehlt.
 """
-import re, os, base64, shutil, json, copy
+import re, os, base64, shutil, json, copy, datetime
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BUILD = os.path.join(ROOT, 'build')
 OUT = os.path.join(ROOT, 'site')
 
 LOGO = open(os.path.join(BUILD, 'assets', 'logo.svg')).read().strip()
+
+# ---------------------------------------------------------------------------
+# Reichweitenmessung
+# CF_TOKEN: Kennung aus Cloudflare Web Analytics (Dashboard > Analytics >
+#   Web Analytics > Seite hinzufügen). Solange der Wert leer ist, steht kein
+#   Zählskript auf der Seite und die Datenschutzerklärung stimmt trotzdem.
+# GSC_TAG: der Inhalt des Bestätigungs-Tags der Google Search Console
+#   (Methode "HTML-Tag"). Landet nur auf der deutschen Startseite.
+# ---------------------------------------------------------------------------
+CF_TOKEN = ''
+GSC_TAG = ''
+
+DOMAIN = 'andreiadacosta.de'
+# Kennung von Andreias Google-Unternehmensprofil (Google Maps).
+GOOGLE_CID = '14295107461892084681'
 
 # ---------------------------------------------------------------------------
 # Inhalte: alles, was sich regelmäßig ändert, steht in inhalte.json.
@@ -34,6 +49,16 @@ KUERZEL = {'de': 'DE', 'en': 'EN', 'pt': 'PT'}
 # Unterseiten, die es nur auf Deutsch gibt (Impressum und Datenschutz bleiben
 # in der Sprache, in der sie rechtlich gelten).
 NUR_DEUTSCH = ('impressum', 'datenschutz')
+# Seiten, die es nur in einer einzigen Sprache gibt. Impressum und Datenschutz
+# bleiben deutsch; die Seite fuer die portugiesischsprachige Gemeinschaft gibt
+# es nur auf Portugiesisch.
+NUR_SPRACHE = {'impressum': 'de', 'datenschutz': 'de', 'portugues': 'pt'}
+
+
+def sprachen_von(slug):
+    """In welchen Sprachen es diese Seite gibt."""
+    einzeln = NUR_SPRACHE.get(slug)
+    return (einzeln,) if einzeln else tuple(SPRACHEN)
 
 FEHLT = []
 
@@ -172,7 +197,7 @@ def langs_html(code, slug):
     """Sprachwahl für eine bestimmte Seite in einer bestimmten Sprache."""
     # Impressum und Datenschutz gibt es nur deutsch; von dort führt der
     # Sprachwechsel auf die Startseite der anderen Sprache.
-    seite = slug if slug not in NUR_DEUTSCH else 'index'
+    seite = slug if slug not in NUR_SPRACHE else 'index'
     teile = []
     for z in SPRACHEN:
         if z == code:
@@ -211,7 +236,12 @@ def footer_for(code):
     hoch = '' if code == 'de' else '../'
     f = f.replace('<a href="#kontakt">Impressum</a>', f'<a href="{hoch}impressum.html">Impressum</a>')
     f = f.replace('<a href="#kontakt">Datenschutz</a>', f'<a href="{hoch}datenschutz.html">Datenschutz</a>')
-    f = f.replace('<br>\n          <a href="#kontakt">AGB</a>', '')
+    # Die AGB-Zeile der Vorlage tragt jetzt die Fragenseite — und im
+    # Portugiesischen zusaetzlich die Seite fuer die Gemeinschaft.
+    zeilen = '<br>\n          <a href="fragen.html">Fragen und Antworten</a>'
+    if code == 'pt':
+        zeilen += '<br>\n          <a href="portugues.html">Coaching em português</a>'
+    f = f.replace('<br>\n          <a href="#kontakt">AGB</a>', zeilen)
     f = f.replace('<a href="#kontakt">{{kontakt.email}}</a>',
                   '<a href="mailto:{{=kontakt.email}}">{{kontakt.email}}</a>')
     f = f.replace('<a href="#kontakt">{{kontakt.telefon_anzeige}}</a>',
@@ -223,17 +253,137 @@ def footer_for(code):
 
 def alternates(slug):
     """Hinweis an Suchmaschinen, in welchen Sprachen es die Seite gibt."""
-    if slug in NUR_DEUTSCH:
+    if slug in NUR_SPRACHE:
         return ''
     zeilen = []
     for z in SPRACHEN:
-        pfad = f'{slug}.html' if z == 'de' else f'{z}/{slug}.html'
-        zeilen.append(f'<link rel="alternate" hreflang="{z}" href="https://andreiadacosta.de/{pfad}">')
-    zeilen.append(f'<link rel="alternate" hreflang="x-default" href="https://andreiadacosta.de/{slug}.html">')
+        zeilen.append(f'<link rel="alternate" hreflang="{z}" href="{adresse(slug, z)}">')
+    zeilen.append(f'<link rel="alternate" hreflang="x-default" href="{adresse(slug, "de")}">')
     return '\n' + '\n'.join(zeilen)
 
 
+def adresse(slug, code):
+    """Die eine richtige Adresse dieser Seite.
+
+    Die Startseite laeuft unter dem nackten Verzeichnis (/ bzw. /en/), nicht
+    unter index.html — sonst kennen Suchmaschinen zwei Adressen fuer dieselbe
+    Seite.
+    """
+    ordner = '' if code == 'de' else code + '/'
+    datei = '' if slug == 'index' else slug + '.html'
+    return 'https://' + DOMAIN + '/' + ordner + datei
+
+
+def teilen_html(slug, code, titel, beschreibung):
+    """Vorschau beim Teilen — WhatsApp, LinkedIn, Signal, Suchmaschinen."""
+    url = adresse(slug, code)
+    sprache = {'de': 'de_DE', 'en': 'en_GB', 'pt': 'pt_PT'}[code]
+    return f'''
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Andreia da Costa">
+<meta property="og:locale" content="{sprache}">
+<meta property="og:url" content="{url}">
+<meta property="og:title" content="{titel}">
+<meta property="og:description" content="{beschreibung}">
+<meta property="og:image" content="https://{DOMAIN}/assets/teilen.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">'''
+
+
+def daten_html(slug, code):
+    """Strukturierte Angaben für Suchmaschinen und KI-Dienste.
+
+    Bewusst ohne aggregateRating: Google erlaubt selbst ausgespielte
+    Bewertungen zum eigenen Betrieb nicht als Rich Snippet.
+    """
+    if slug != 'index' or code != 'de':
+        return ''
+    k = INHALTE['kontakt']
+    daten = {
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        '@id': 'https://' + DOMAIN + '/#andreia',
+        'name': 'Andreia da Costa Jalali — Life & Business Coaching',
+        'alternateName': 'Andreia da Costa Coaching',
+        'description': ('Life & Business Coaching, hnc (human neuro cybrainetics), '
+                        'Finanzcoaching und Retreats in Düsseldorf und online.'),
+        'url': 'https://' + DOMAIN + '/',
+        'image': 'https://' + DOMAIN + '/assets/hero.jpg',
+        'email': k['email'],
+        'telephone': k['telefon_anzeige'],
+        'address': {'@type': 'PostalAddress', 'streetAddress': k['strasse'],
+                    'postalCode': k['ort'].split()[0], 'addressLocality': 'Düsseldorf',
+                    'addressRegion': 'NRW', 'addressCountry': 'DE'},
+        'areaServed': [{'@type': 'City', 'name': 'Düsseldorf'},
+                       {'@type': 'Country', 'name': 'Deutschland'}],
+        'availableLanguage': ['de', 'en', 'pt'],
+        'sameAs': [k['instagram'], 'https://www.google.com/maps?cid=' + GOOGLE_CID],
+        'founder': {'@type': 'Person', 'name': 'Andreia da Costa Jalali',
+                    'jobTitle': 'Life & Business Coach', 'url': 'https://' + DOMAIN + '/'},
+        'makesOffer': [
+            {'@type': 'Offer', 'itemOffered': {'@type': 'Service',
+             'name': 'Life & Business Coaching',
+             'description': 'Einzelcoaching in Düsseldorf oder online.'}},
+            {'@type': 'Offer', 'itemOffered': {'@type': 'Service',
+             'name': 'hnc — human neuro cybrainetics',
+             'description': 'Manuelle Arbeit am Nervensystem, vor Ort in Düsseldorf.'}},
+            {'@type': 'Offer', 'itemOffered': {'@type': 'Service',
+             'name': 'Finanzcoaching',
+             'description': 'Überblick über die eigenen Finanzen. Keine Anlageberatung.'}},
+            {'@type': 'Offer', 'itemOffered': {'@type': 'Service',
+             'name': 'Retreats',
+             'description': 'Wochenenden in kleiner Gruppe.'}},
+        ],
+    }
+    return ('\n<script type="application/ld+json">'
+            + json.dumps(daten, ensure_ascii=False) + '</script>')
+
+
+def faq_daten(html):
+    """FAQPage-Angaben aus der fertigen Fragenseite.
+
+    Wird erst nach dem Uebersetzen und Einsetzen gebaut, damit in den
+    Antworten dieselben Preise stehen wie auf der Seite.
+    """
+    eintraege = []
+    for frage, antwort in re.findall(
+            r'<div class="f">\s*<h3>(.*?)</h3>\s*<div class="a">(.*?)</div>\s*</div>',
+            html, re.S):
+        text = re.sub(r'<[^>]+>', ' ', antwort)
+        text = re.sub(r'\s+', ' ', text).strip()
+        text = re.sub(r'\s+([.,;:!?])', r'\1', text)
+        eintraege.append({
+            '@type': 'Question',
+            'name': re.sub(r'<[^>]+>', '', frage).strip(),
+            'acceptedAnswer': {'@type': 'Answer', 'text': text},
+        })
+    if not eintraege:
+        return ''
+    daten = {'@context': 'https://schema.org', '@type': 'FAQPage',
+             'mainEntity': eintraege}
+    return ('<script type="application/ld+json">'
+            + json.dumps(daten, ensure_ascii=False) + '</script>')
+
+
+def messung_html():
+    """Cloudflare Web Analytics. Leerer Token = kein Skript auf der Seite."""
+    if not CF_TOKEN:
+        return ''
+    return ('\n<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
+            'data-cf-beacon=\'{"token": "' + CF_TOKEN + '"}\'></script>')
+
+
+def gsc_html(slug, code):
+    """Bestätigung für die Google Search Console — nur auf der deutschen Startseite."""
+    if not GSC_TAG or slug != 'index' or code != 'de':
+        return ''
+    return '\n<meta name="google-site-verification" content="' + GSC_TAG + '">'
+
+
 def page(slug, titel, beschreibung, inhalt, code, spr, ziel_ordner):
+    from pages import PAGES
     assets = 'assets' if code == 'de' else '../assets'
     nav = uebersetze(nav_for(slug, code), spr)
     if code != 'de':
@@ -247,7 +397,7 @@ def page(slug, titel, beschreibung, inhalt, code, spr, ziel_ordner):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{titel}</title>
-<meta name="description" content="{beschreibung}">{alternates(slug)}
+<meta name="description" content="{beschreibung}">{alternates(slug)}{teilen_html(slug, code, titel, beschreibung)}{gsc_html(slug, code)}{daten_html(slug, code)}
 <link rel="icon" href="{assets}/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="{assets}/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{assets}/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -268,12 +418,18 @@ def page(slug, titel, beschreibung, inhalt, code, spr, ziel_ordner):
   }},{{threshold:0.12}});
   els.forEach(function(e){{io.observe(e);}});
 }})();
-</script>
+</script>{messung_html()}
 </body>
 </html>
 '''
+    if 'hnc' not in PAGES:
+        # Die hnc-Seite ist (noch) nicht veroeffentlicht — Verweise darauf
+        # fuehren dann auf den hnc-Teil der Startseite statt ins Leere.
+        html = html.replace('href="hnc.html"', 'href="index.html#angebot"')
     html = html.replace('{{ASSETS}}', assets)
     html = fill(html, inhalte_fuer(spr), tuple(spr.get('zitat', ('„', '"'))))
+    if slug == 'fragen':
+        html = html.replace('</body>', faq_daten(html) + '\n</body>')
     os.makedirs(ziel_ordner, exist_ok=True)
     open(os.path.join(ziel_ordner, slug + '.html'), 'w', encoding='utf-8').write(html)
 
@@ -285,17 +441,63 @@ def baue_sprache(code):
 
     t = spr.get('seiten', {}).get('index', {})
     page('index',
-         t.get('titel', 'Andreia da Costa — Authentisch leben, klar handeln'),
-         t.get('beschreibung', 'Life &amp; Business Coaching, hnc und Retreats in Düsseldorf. Ein Raum, in dem du gesehen wirst.'),
+         t.get('titel', 'Life &amp; Business Coaching in Düsseldorf — Andreia da Costa'),
+         t.get('beschreibung', 'Life &amp; Business Coaching in Düsseldorf und online: Einzelcoaching, hnc, Finanzcoaching und Retreats. Erstgespräch kostenlos.'),
          MAIN, code, spr, ziel)
 
     for slug, (titel, beschreibung, inhalt) in PAGES.items():
-        if code != 'de' and slug in NUR_DEUTSCH:
+        if code not in sprachen_von(slug):
             continue
         t = spr.get('seiten', {}).get(slug, {})
         page(slug, t.get('titel', titel), t.get('beschreibung', beschreibung),
              inhalt, code, spr, ziel)
     return ziel
+
+
+def schreibe_sitemap():
+    """Verzeichnis aller Seiten für Suchmaschinen — mit Sprachverweisen."""
+    from pages import PAGES
+    slugs = ['index'] + list(PAGES.keys())
+    heute = datetime.date.today().isoformat()
+    z = ['<?xml version="1.0" encoding="UTF-8"?>',
+         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+         'xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    for slug in slugs:
+        sprachen = list(sprachen_von(slug))
+        for code in sprachen:
+            z.append('  <url>')
+            z.append('    <loc>%s</loc>' % adresse(slug, code))
+            z.append('    <lastmod>%s</lastmod>' % heute)
+            for andere in sprachen:
+                z.append('    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>'
+                         % (andere, adresse(slug, andere)))
+            z.append('  </url>')
+    z.append('</urlset>')
+    open(os.path.join(OUT, 'sitemap.xml'), 'w', encoding='utf-8').write('\n'.join(z) + '\n')
+
+
+def schreibe_robots():
+    """Alles freigegeben — auch ausdrücklich für die KI-Dienste."""
+    text = """# Alle Suchmaschinen und KI-Dienste dürfen diese Seite lesen.
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Ausdrücklich erlaubt, damit Andreia in den Antworten dieser Dienste vorkommt:
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://%s/sitemap.xml
+""" % DOMAIN
+    open(os.path.join(OUT, 'robots.txt'), 'w', encoding='utf-8').write(text)
 
 
 if __name__ == '__main__':
@@ -314,6 +516,9 @@ if __name__ == '__main__':
 
     for code in SPRACHEN:
         baue_sprache(code)
+
+    schreibe_sitemap()
+    schreibe_robots()
 
     for code, offen in sorted(set(FEHLT)):
         print('  ohne Übersetzung (%s): %s' % (code, offen))
