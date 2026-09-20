@@ -3,15 +3,19 @@
   "name": "English",
   "seiten": {
     "index": {
-      "titel": "Andreia da Costa — Live authentically, act with clarity",
-      "beschreibung": "Life &amp; business coaching, hnc and retreats in Düsseldorf. A space where you’re seen."
+      "titel": "Life &amp; Business Coaching in Düsseldorf — Andreia da Costa",
+      "beschreibung": "Life &amp; business coaching in Düsseldorf and online: one-to-one coaching, hnc, financial coaching and retreats. First conversation free."
     },
     "hnc": {
-      "titel": "Bodywork with hnc — Andreia da Costa",
+      "titel": "hnc in Düsseldorf — bodywork with Andreia da Costa",
       "beschreibung": "hnc (human neuro cybrainetics) in Düsseldorf: quiet, hands-on work with the nervous system, for those whose way in is through the body."
     },
+    "fragen": {
+      "titel": "Questions and answers about coaching — Andreia da Costa",
+      "beschreibung": "What does coaching in Düsseldorf cost, how does the first conversation work, how is it different from therapy, what is hnc — the most common questions, answered openly."
+    },
     "finanzcoaching": {
-      "titel": "Financial coaching — Andreia da Costa",
+      "titel": "Financial coaching in Düsseldorf — Andreia da Costa",
       "beschreibung": "Financial coaching in Düsseldorf: getting an overview, first steps in building wealth, putting what already exists in order. Not investment advice."
     }
   },
@@ -175,7 +179,34 @@
     "Es gibt keine Wunderheilung, aber wer ein paar Themen in seinem „Rucksack des Lebens\" mit sich herum schleppt, die kein traditioneller Doktor mit Skalpell und Tabletten lösen kann, ist hier an der richtigen Adresse!": "There is no miracle cure, but anyone carrying a few things around in their “rucksack of life” that no traditional doctor can fix with a scalpel and pills has come to the right place!",
     "Malte W. · Google-Rezension": "Malte W. · Google review",
     "Am einfachsten probierst du es aus.": "The simplest thing is to try it.",
-    "Wenn du nicht weißt, ob das etwas für dich ist: schreib mir, dann klären wir das in fünf Minuten.": "If you don’t know whether this is for you: write to me and we’ll settle it in five minutes."
+    "Wenn du nicht weißt, ob das etwas für dich ist: schreib mir, dann klären wir das in fünf Minuten.": "If you don’t know whether this is for you: write to me and we’ll settle it in five minutes.",
+    "Fragen und Antworten": "Questions and answers",
+    "Was Menschen<br><em>vorher wissen wollen.</em>": "What people<br><em>want to know first.</em>",
+    "Die Fragen, die mir am häufigsten gestellt werden — offen beantwortet, damit du nicht erst anrufen musst, um sie zu klären.": "The questions I’m asked most often, answered openly — so you don’t have to call just to find out.",
+    "Was kostet ein Coaching bei dir?": "What does coaching with you cost?",
+    "Das Erstgespräch ist kostenlos und dauert 30 Minuten. Eine einzelne Sitzung kostet {{preise.coaching}} für {{preise.coaching_dauer}}. Wer länger mit mir arbeiten möchte, nimmt ein Paket mit vier, acht oder sechzehn Sitzungen — alle Preise stehen offen auf der <a href=\"index.html#pakete\">Startseite</a>. Pakete sind ab dem Kauf zwölf Monate lang einlösbar.": "The first conversation is free and lasts 30 minutes. A single session costs {{preise.coaching}} for {{preise.coaching_dauer}}. If you want to work with me for longer, you take a package of four, eight or sixteen sessions — all prices are set out openly on the <a href=\"index.html#pakete\">home page</a>. Packages can be used up over twelve months from the date of purchase.",
+    "Wie läuft das erste Gespräch ab?": "What happens in the first conversation?",
+    "Telefonisch oder online, 30 Minuten, kostenlos und unverbindlich. Du erzählst mir, worum es geht, und wir schauen gemeinsam, was du brauchst. Danach entscheidest du in Ruhe, ob und wie es weitergeht.": "By phone or online, 30 minutes, free and without obligation. You tell me what it’s about and we look together at what you need. Afterwards you decide in your own time whether and how to go on.",
+    "Muss ich mich vorbereiten?": "Do I need to prepare anything?",
+    "Nein. Du brauchst keine Unterlagen, keine Vorgeschichte und keine fertige Frage. Die meisten wissen vor dem ersten Termin gar nicht genau, was sie erwartet — das ist völlig in Ordnung.": "No. You need no documents, no backstory and no finished question. Most people have no clear idea what to expect before the first session — that’s perfectly fine.",
+    "Wie viele Sitzungen brauche ich?": "How many sessions will I need?",
+    "Das entscheiden wir nach dem Erstgespräch gemeinsam. In einem einzelnen Termin verändert sich selten wirklich etwas, deshalb arbeite ich meistens über einen Zeitraum. Wie lang dieser Zeitraum ist, bestimmst du mit.": "We decide that together after the first conversation. A single session rarely changes much, so I usually work over a stretch of time. How long that stretch is, you help decide.",
+    "Ist Coaching dasselbe wie Therapie?": "Is coaching the same as therapy?",
+    "Nein. Coaching ersetzt keine ärztliche oder psychotherapeutische Behandlung, und ich stelle keine Diagnosen. In der Therapie geht es oft um die Aufarbeitung von etwas Vergangenem; bei mir geht es um Klarheit über das, was jetzt ist, und über deine nächsten Schritte. Wenn ich merke, dass etwas in ärztliche oder therapeutische Hände gehört, sage ich dir das offen.": "No. Coaching is not a substitute for medical or psychotherapeutic treatment, and I don’t diagnose. Therapy often works through something from the past; with me it’s about clarity on what is happening now and on your next steps. If I see that something belongs in medical or therapeutic hands, I’ll tell you so plainly.",
+    "Findet das in Düsseldorf statt oder online?": "Does this happen in Düsseldorf or online?",
+    "Beides. Wir sehen uns in meinen Räumen in Düsseldorf, oder wir machen es online, wenn dir das lieber ist oder der Weg zu weit wäre. hnc geht nur vor Ort, weil ich dabei mit den Händen arbeite.": "Both. We meet in my rooms in Düsseldorf, or we do it online if you prefer that or the journey would be too far. hnc only works in person, because I work with my hands.",
+    "In welchen Sprachen arbeitest du?": "Which languages do you work in?",
+    "Auf Deutsch, Englisch und Portugiesisch. Über Gefühle spricht man am ehrlichsten in der Sprache, in der man denkt — du musst dich bei mir nicht erst übersetzen.": "German, English and Portuguese. People speak most honestly about feelings in the language they think in — with me you don’t have to translate yourself first.",
+    "Was ist hnc?": "What is hnc?",
+    "hnc steht für human neuro cybrainetics: eine ruhige, manuelle Arbeit am Nervensystem, in der Arbeitsweise vergleichbar mit Physiotherapie oder Osteopathie. Du liegst, bleibst angezogen und musst nichts erklären. Eine Sitzung dauert {{preise.hnc_dauer}} und kostet {{preise.hnc}}; eine Grundbehandlung sind meist zwei Sitzungen. hnc ist keine Heilbehandlung — ich behandle keine Krankheiten und verspreche keine Ergebnisse. <a href=\"hnc.html\">Mehr dazu hier.</a>": "hnc stands for human neuro cybrainetics: quiet, hands-on work with the nervous system, close in approach to physiotherapy or osteopathy. You lie down, stay dressed and don’t have to explain anything. A session lasts {{preise.hnc_dauer}} and costs {{preise.hnc}}; a basic course is usually two sessions. hnc is not a medical treatment — I don’t treat illnesses and I promise no results. <a href=\"hnc.html\">More about it here.</a>",
+    "Ist Finanzcoaching eine Anlageberatung?": "Is financial coaching investment advice?",
+    "Nein. Ich verkaufe keine Produkte, empfehle keine Papiere und vermittle nichts. Es geht darum, dass du deine eigenen Zahlen verstehst und selbst entscheiden kannst. Eine Sitzung dauert {{preise.finanzcoaching_dauer}} und kostet {{preise.finanzcoaching}}. <a href=\"finanzcoaching.html\">Mehr dazu hier.</a>": "No. I sell no products, recommend no securities and broker nothing. The point is that you understand your own numbers and can decide for yourself. A session lasts {{preise.finanzcoaching_dauer}} and costs {{preise.finanzcoaching}}. <a href=\"finanzcoaching.html\">More about it here.</a>",
+    "Was sind die Retreats?": "What are the retreats?",
+    "Ein Wochenende heraus aus dem Alltag, in kleiner Gruppe, {{preise.retreat_ab}}. Kein Programm, das abgearbeitet wird, sondern Zeit, Stille und ein Rahmen, in dem sich etwas lösen darf. Die nächsten Termine stehen noch nicht fest — wer auf der Liste steht, erfährt es als Erstes.": "A weekend away from everyday life, in a small group, {{preise.retreat_ab}}. Not a programme to work through, but time, quiet and room for something to loosen. The next dates aren’t fixed yet — whoever is on the list hears first.",
+    "Bleibt das, was ich erzähle, unter uns?": "Does what I say stay between us?",
+    "Ja. Alles, was in einem Coaching oder einer hnc-Sitzung besprochen wird, bleibt zwischen uns. Ich gebe keine Inhalte an Dritte weiter.": "Yes. Everything discussed in a coaching or hnc session stays between us. I pass nothing on to anyone else.",
+    "Deine Frage steht nicht dabei?": "Your question isn’t here?",
+    "Dann schreib sie mir einfach. Ich antworte selbst, und es kostet dich nichts.": "Then just write it to me. I answer myself, and it costs you nothing."
   },
   "werte": {
     "60 Minuten": "60 minutes",
