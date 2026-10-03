@@ -4,7 +4,7 @@
   "seiten": {
     "index": {
       "titel": "Life &amp; Business Coaching in Düsseldorf — Andreia da Costa",
-      "beschreibung": "Life &amp; business coaching in Düsseldorf and online: one-to-one coaching, hnc, financial coaching and retreats. First conversation free."
+      "beschreibung": "Life &amp; business coaching in Düsseldorf and online: one-to-one coaching, financial coaching and retreats. First conversation free."
     },
     "hnc": {
       "titel": "hnc in Düsseldorf — bodywork with Andreia da Costa",
@@ -12,7 +12,7 @@
     },
     "fragen": {
       "titel": "Questions and answers about coaching — Andreia da Costa",
-      "beschreibung": "What does coaching in Düsseldorf cost, how does the first conversation work, how is it different from therapy, what is hnc — the most common questions, answered openly."
+      "beschreibung": "What does coaching in Düsseldorf cost, how does the first conversation work, how is it different from therapy — the most common questions, answered openly."
     },
     "finanzcoaching": {
       "titel": "Financial coaching in Düsseldorf — Andreia da Costa",
@@ -48,7 +48,7 @@
     "Nicht jeder Mensch ist über Worte erreichbar. Für alle, bei denen der Weg über den Körper führt, arbeite ich zusätzlich mit": "Not everyone can be reached through words. For those whose way in is through the body, I also work with",
     "— manuell, mit dem Nervensystem, in der Arbeitsweise vergleichbar mit Physiotherapie oder Osteopathie.": "— hands-on work with the nervous system, close in approach to physiotherapy or osteopathy.",
     ">Einzelsitzung · {{preise.hnc_dauer}} · vor Ort · ": ">Single session · {{preise.hnc_dauer}} · in person · ",
-    "Coaching und hnc ersetzen keine ärztliche oder psychotherapeutische Behandlung und stellen keine Diagnosen.": "Coaching and hnc are not a substitute for medical or psychotherapeutic treatment, and they don’t diagnose.",
+    "Coaching ersetzt keine ärztliche oder psychotherapeutische Behandlung und stellt keine Diagnosen.": "Coaching is not a substitute for medical or psychotherapeutic treatment, and it doesn’t diagnose.",
     "Wie eine Sitzung abläuft": "How a session goes",
     "Du musst nichts vorbereiten.": "You don’t have to prepare anything.",
     "Die meisten wissen vor dem ersten Termin gar nicht so genau, was auf sie zukommt. Deshalb hier vorab, wie es bei mir läuft.": "Most people don’t quite know what to expect before the first appointment. So here’s how it works with me.",
@@ -100,7 +100,7 @@
     "'\\n\\n--\\nName: '": "'\\n\\n--\\nName: '",
     "'\\nE-Mail: '": "'\\nEmail: '",
     "Dein E-Mail-Programm öffnet sich mit der fertigen Nachricht.": "Your email app is opening with the finished message.",
-    "Coaching und hnc ersetzen keine ärztliche Behandlung. Finanzcoaching ist keine Anlageberatung und keine Anlagevermittlung.": "Coaching and hnc are not a substitute for medical treatment. Financial coaching is neither investment advice nor investment brokerage.",
+    "Coaching ersetzt keine ärztliche Behandlung. Finanzcoaching ist keine Anlageberatung und keine Anlagevermittlung.": "Coaching is not a substitute for medical treatment. Financial coaching is neither investment advice nor investment brokerage.",
     "title=\"Beispielpreis\"": "title=\"Example price\"",
     "title=\"Platzhalter — echter Termin fehlt noch\"": "title=\"Placeholder — the real date is still to come\"",
     "alt=\"Andreia da Costa bei einem Workshop\"": "alt=\"Andreia da Costa at a workshop\"",
@@ -194,7 +194,7 @@
     "Ist Coaching dasselbe wie Therapie?": "Is coaching the same as therapy?",
     "Nein. Coaching ersetzt keine ärztliche oder psychotherapeutische Behandlung, und ich stelle keine Diagnosen. In der Therapie geht es oft um die Aufarbeitung von etwas Vergangenem; bei mir geht es um Klarheit über das, was jetzt ist, und über deine nächsten Schritte. Wenn ich merke, dass etwas in ärztliche oder therapeutische Hände gehört, sage ich dir das offen.": "No. Coaching is not a substitute for medical or psychotherapeutic treatment, and I don’t diagnose. Therapy often works through something from the past; with me it’s about clarity on what is happening now and on your next steps. If I see that something belongs in medical or therapeutic hands, I’ll tell you so plainly.",
     "Findet das in Düsseldorf statt oder online?": "Does this happen in Düsseldorf or online?",
-    "Beides. Wir sehen uns in meinen Räumen in Düsseldorf, oder wir machen es online, wenn dir das lieber ist oder der Weg zu weit wäre. hnc geht nur vor Ort, weil ich dabei mit den Händen arbeite.": "Both. We meet in my rooms in Düsseldorf, or we do it online if you prefer that or the journey would be too far. hnc only works in person, because I work with my hands.",
+    "Beides. Wir sehen uns in meinen Räumen in Düsseldorf, oder wir machen es online, wenn dir das lieber ist oder der Weg zu weit wäre.": "Both. We meet in my rooms in Düsseldorf, or we do it online if you prefer that or the journey would be too far.",
     "In welchen Sprachen arbeitest du?": "Which languages do you work in?",
     "Auf Deutsch, Englisch und Portugiesisch. Über Gefühle spricht man am ehrlichsten in der Sprache, in der man denkt — du musst dich bei mir nicht erst übersetzen.": "German, English and Portuguese. People speak most honestly about feelings in the language they think in — with me you don’t have to translate yourself first.",
     "Was ist hnc?": "What is hnc?",
@@ -204,7 +204,7 @@
     "Was sind die Retreats?": "What are the retreats?",
     "Ein Wochenende heraus aus dem Alltag, in kleiner Gruppe, {{preise.retreat_ab}}. Kein Programm, das abgearbeitet wird, sondern Zeit, Stille und ein Rahmen, in dem sich etwas lösen darf. Die nächsten Termine stehen noch nicht fest — wer auf der Liste steht, erfährt es als Erstes.": "A weekend away from everyday life, in a small group, {{preise.retreat_ab}}. Not a programme to work through, but time, quiet and room for something to loosen. The next dates aren’t fixed yet — whoever is on the list hears first.",
     "Bleibt das, was ich erzähle, unter uns?": "Does what I say stay between us?",
-    "Ja. Alles, was in einem Coaching oder einer hnc-Sitzung besprochen wird, bleibt zwischen uns. Ich gebe keine Inhalte an Dritte weiter.": "Yes. Everything discussed in a coaching or hnc session stays between us. I pass nothing on to anyone else.",
+    "Ja. Alles, was in einem Coaching besprochen wird, bleibt zwischen uns. Ich gebe keine Inhalte an Dritte weiter.": "Yes. Everything discussed in a coaching session stays between us. I pass nothing on to anyone else.",
     "Deine Frage steht nicht dabei?": "Your question isn’t here?",
     "Dann schreib sie mir einfach. Ich antworte selbst, und es kostet dich nichts.": "Then just write it to me. I answer myself, and it costs you nothing."
   },
