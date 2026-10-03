@@ -31,17 +31,12 @@ PORTUGUES = '''
 <section class="band">
   <div class="wrap reveal">
     <p class="eyebrow">O que podes fazer comigo</p>
-    <h2 class="col">Quatro caminhos, a mesma escuta.</h2>
+    <h2 class="col">Três caminhos, a mesma escuta.</h2>
     <div class="steps" style="margin-top:56px;">
       <div class="step">
         <span class="n">Conversa</span>
         <h3>Life &amp; Business Coaching</h3>
         <p>Para o que está atravessado — na vida pessoal ou no trabalho. Ganhas clareza sobre a tua situação, sobre os padrões que se repetem e sobre o passo seguinte.</p>
-      </div>
-      <div class="step">
-        <span class="n">Corpo</span>
-        <h3>hnc</h3>
-        <p>Trabalho manual e calmo com o sistema nervoso, para quem o caminho não passa pelas palavras. Presencial em Düsseldorf. <a href="hnc.html" style="color:inherit;">Saber mais</a></p>
       </div>
       <div class="step">
         <span class="n">Dinheiro</span>
@@ -125,7 +120,7 @@ FRAGEN = '''
 
       <div class="f">
         <h3>Findet das in Düsseldorf statt oder online?</h3>
-        <div class="a"><p>Beides. Wir sehen uns in meinen Räumen in Düsseldorf, oder wir machen es online, wenn dir das lieber ist oder der Weg zu weit wäre. hnc geht nur vor Ort, weil ich dabei mit den Händen arbeite.</p></div>
+        <div class="a"><p>Beides. Wir sehen uns in meinen Räumen in Düsseldorf, oder wir machen es online, wenn dir das lieber ist oder der Weg zu weit wäre.</p></div>
       </div>
 
       <div class="f">
@@ -133,10 +128,6 @@ FRAGEN = '''
         <div class="a"><p>Auf Deutsch, Englisch und Portugiesisch. Über Gefühle spricht man am ehrlichsten in der Sprache, in der man denkt — du musst dich bei mir nicht erst übersetzen.</p></div>
       </div>
 
-      <div class="f">
-        <h3>Was ist hnc?</h3>
-        <div class="a"><p>hnc steht für human neuro cybrainetics: eine ruhige, manuelle Arbeit am Nervensystem, in der Arbeitsweise vergleichbar mit Physiotherapie oder Osteopathie. Du liegst, bleibst angezogen und musst nichts erklären. Eine Sitzung dauert {{preise.hnc_dauer}} und kostet {{preise.hnc}}; eine Grundbehandlung sind meist zwei Sitzungen. hnc ist keine Heilbehandlung — ich behandle keine Krankheiten und verspreche keine Ergebnisse. <a href="hnc.html">Mehr dazu hier.</a></p></div>
-      </div>
 
       <div class="f">
         <h3>Ist Finanzcoaching eine Anlageberatung?</h3>
@@ -150,7 +141,7 @@ FRAGEN = '''
 
       <div class="f">
         <h3>Bleibt das, was ich erzähle, unter uns?</h3>
-        <div class="a"><p>Ja. Alles, was in einem Coaching oder einer hnc-Sitzung besprochen wird, bleibt zwischen uns. Ich gebe keine Inhalte an Dritte weiter.</p></div>
+        <div class="a"><p>Ja. Alles, was in einem Coaching besprochen wird, bleibt zwischen uns. Ich gebe keine Inhalte an Dritte weiter.</p></div>
       </div>
 
     </div>
@@ -287,7 +278,7 @@ IMPRESSUM = '''
       E-Mail: <a href="mailto:{{=kontakt.email}}">{{kontakt.email}}</a></p>
 
       <h3 style="margin-top:2.2rem;">Berufsbezeichnung</h3>
-      <p style="margin-top:1rem;">Zertifizierte Life &amp; Business Coach, hnc-Anwenderin (human neuro cybrainetics). Die Tätigkeit als Coach ist keine Heilbehandlung und ersetzt keine ärztliche oder psychotherapeutische Behandlung.</p>
+      <p style="margin-top:1rem;">Zertifizierte Life &amp; Business Coach. Die Tätigkeit als Coach ist keine Heilbehandlung und ersetzt keine ärztliche oder psychotherapeutische Behandlung.</p>
 
       <h3 style="margin-top:2.2rem;">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
       <p style="margin-top:1rem;">Andreia da Costa, Anschrift wie oben.</p>
@@ -342,7 +333,7 @@ DATENSCHUTZ = '''
       <p style="margin-top:1rem;">Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung, das Recht auf Datenübertragbarkeit sowie ein Widerspruchsrecht gegen Verarbeitungen auf Grundlage berechtigter Interessen. Eine erteilte Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen. Außerdem steht dir ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu; zuständig ist die Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen.</p>
 
       <h3 style="margin-top:2.2rem;">Vertraulichkeit im Coaching</h3>
-      <p style="margin-top:1rem;">Alles, was in einem Coaching oder einer hnc-Sitzung besprochen wird, bleibt zwischen uns. Ich gebe keine Inhalte an Dritte weiter.</p>
+      <p style="margin-top:1rem;">Alles, was in einem Coaching besprochen wird, bleibt zwischen uns. Ich gebe keine Inhalte an Dritte weiter.</p>
 
       <p style="margin-top:2.4rem;font-size:.88rem;color:var(--ink-mute);">Stand: August 2026</p>
     </div>
@@ -354,12 +345,12 @@ DATENSCHUTZ = '''
 PAGES = {
     'portugues': (
         'Coaching em português em Düsseldorf — Andreia da Costa',
-        'Life &amp; Business Coaching, hnc, coaching financeiro e retiros em português — em Düsseldorf e online. Primeira conversa gratuita.',
+        'Life &amp; Business Coaching, coaching financeiro e retiros em português — em Düsseldorf e online. Primeira conversa gratuita.',
         PORTUGUES,
     ),
     'fragen': (
         'Fragen und Antworten zum Coaching — Andreia da Costa',
-        'Was kostet ein Coaching in Düsseldorf, wie läuft das Erstgespräch ab, worin unterscheidet es sich von Therapie, was ist hnc — die häufigsten Fragen, offen beantwortet.',
+        'Was kostet ein Coaching in Düsseldorf, wie läuft das Erstgespräch ab, worin unterscheidet es sich von Therapie — die häufigsten Fragen, offen beantwortet.',
         FRAGEN,
     ),
     'finanzcoaching': (

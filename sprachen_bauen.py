@@ -87,9 +87,9 @@ TEXTE = [
     ('>Einzelsitzung · {{preise.hnc_dauer}} · vor Ort · ',
      '>Single session · {{preise.hnc_dauer}} · in person · ',
      '>Sessão individual · {{preise.hnc_dauer}} · presencial · '),
-    ('Coaching und hnc ersetzen keine ärztliche oder psychotherapeutische Behandlung und stellen keine Diagnosen.',
-     'Coaching and hnc are not a substitute for medical or psychotherapeutic treatment, and they don’t diagnose.',
-     'O coaching e o hnc não substituem tratamento médico ou psicoterapêutico e não fazem diagnósticos.'),
+    ('Coaching ersetzt keine ärztliche oder psychotherapeutische Behandlung und stellt keine Diagnosen.',
+     'Coaching is not a substitute for medical or psychotherapeutic treatment, and it doesn’t diagnose.',
+     'O coaching não substitui tratamento médico ou psicoterapêutico e não faz diagnósticos.'),
 
     # --- Ablauf -----------------------------------------------------------
     ('Wie eine Sitzung abläuft', 'How a session goes', 'Como decorre uma sessão'),
@@ -207,9 +207,9 @@ TEXTE = [
      'A tua aplicação de e-mail vai abrir com a mensagem pronta.'),
 
     # --- Fuß --------------------------------------------------------------
-    ('Coaching und hnc ersetzen keine ärztliche Behandlung. Finanzcoaching ist keine Anlageberatung und keine Anlagevermittlung.',
-     'Coaching and hnc are not a substitute for medical treatment. Financial coaching is neither investment advice nor investment brokerage.',
-     'O coaching e o hnc não substituem tratamento médico. O coaching financeiro não é consultoria nem intermediação de investimentos.'),
+    ('Coaching ersetzt keine ärztliche Behandlung. Finanzcoaching ist keine Anlageberatung und keine Anlagevermittlung.',
+     'Coaching is not a substitute for medical treatment. Financial coaching is neither investment advice nor investment brokerage.',
+     'O coaching não substitui tratamento médico. O coaching financeiro não é consultoria nem intermediação de investimentos.'),
 
     # --- Bildbeschreibungen und Hinweise ----------------------------------
     ('title="Beispielpreis"', 'title="Example price"', 'title="Preço de exemplo"'),
@@ -434,9 +434,9 @@ TEXTE += [
 
     ('Findet das in Düsseldorf statt oder online?', 'Does this happen in Düsseldorf or online?',
      'Isto é em Düsseldorf ou online?'),
-    ('Beides. Wir sehen uns in meinen Räumen in Düsseldorf, oder wir machen es online, wenn dir das lieber ist oder der Weg zu weit wäre. hnc geht nur vor Ort, weil ich dabei mit den Händen arbeite.',
-     'Both. We meet in my rooms in Düsseldorf, or we do it online if you prefer that or the journey would be too far. hnc only works in person, because I work with my hands.',
-     'As duas coisas. Encontramo-nos no meu espaço em Düsseldorf, ou fazemos online se preferires ou se a viagem for longa de mais. O hnc só é possível presencialmente, porque trabalho com as mãos.'),
+    ('Beides. Wir sehen uns in meinen Räumen in Düsseldorf, oder wir machen es online, wenn dir das lieber ist oder der Weg zu weit wäre.',
+     'Both. We meet in my rooms in Düsseldorf, or we do it online if you prefer that or the journey would be too far.',
+     'As duas coisas. Encontramo-nos no meu espaço em Düsseldorf, ou fazemos online se preferires ou se a viagem for longa de mais.'),
 
     ('In welchen Sprachen arbeitest du?', 'Which languages do you work in?',
      'Em que línguas trabalhas?'),
@@ -462,9 +462,9 @@ TEXTE += [
 
     ('Bleibt das, was ich erzähle, unter uns?', 'Does what I say stay between us?',
      'O que eu contar fica entre nós?'),
-    ('Ja. Alles, was in einem Coaching oder einer hnc-Sitzung besprochen wird, bleibt zwischen uns. Ich gebe keine Inhalte an Dritte weiter.',
-     'Yes. Everything discussed in a coaching or hnc session stays between us. I pass nothing on to anyone else.',
-     'Sim. Tudo o que é falado numa sessão de coaching ou de hnc fica entre nós. Não passo nada a terceiros.'),
+    ('Ja. Alles, was in einem Coaching besprochen wird, bleibt zwischen uns. Ich gebe keine Inhalte an Dritte weiter.',
+     'Yes. Everything discussed in a coaching session stays between us. I pass nothing on to anyone else.',
+     'Sim. Tudo o que é falado numa sessão de coaching fica entre nós. Não passo nada a terceiros.'),
 
     ('Deine Frage steht nicht dabei?', 'Your question isn’t here?',
      'A tua pergunta não está aqui?'),
@@ -551,11 +551,11 @@ PAKET_TEXTE = {
 SEITEN = {
     'index': {
         'de': ('Life &amp; Business Coaching in Düsseldorf — Andreia da Costa',
-               'Life &amp; Business Coaching in Düsseldorf und online: Einzelcoaching, hnc, Finanzcoaching und Retreats. Erstgespräch kostenlos.'),
+               'Life &amp; Business Coaching in Düsseldorf und online: Einzelcoaching, Finanzcoaching und Retreats. Erstgespräch kostenlos.'),
         'en': ('Life &amp; Business Coaching in Düsseldorf — Andreia da Costa',
-               'Life &amp; business coaching in Düsseldorf and online: one-to-one coaching, hnc, financial coaching and retreats. First conversation free.'),
+               'Life &amp; business coaching in Düsseldorf and online: one-to-one coaching, financial coaching and retreats. First conversation free.'),
         'pt': ('Life &amp; Business Coaching em Düsseldorf — Andreia da Costa',
-               'Life &amp; Business Coaching em Düsseldorf e online: sessões individuais, hnc, coaching financeiro e retiros. Primeira conversa gratuita.'),
+               'Life &amp; Business Coaching em Düsseldorf e online: sessões individuais, coaching financeiro e retiros. Primeira conversa gratuita.'),
     },
     'hnc': {
         'de': ('hnc in Düsseldorf — Körperarbeit mit Andreia da Costa',
@@ -567,11 +567,11 @@ SEITEN = {
     },
     'fragen': {
         'de': ('Fragen und Antworten zum Coaching — Andreia da Costa',
-               'Was kostet ein Coaching in Düsseldorf, wie läuft das Erstgespräch ab, worin unterscheidet es sich von Therapie, was ist hnc — die häufigsten Fragen, offen beantwortet.'),
+               'Was kostet ein Coaching in Düsseldorf, wie läuft das Erstgespräch ab, worin unterscheidet es sich von Therapie — die häufigsten Fragen, offen beantwortet.'),
         'en': ('Questions and answers about coaching — Andreia da Costa',
-               'What does coaching in Düsseldorf cost, how does the first conversation work, how is it different from therapy, what is hnc — the most common questions, answered openly.'),
+               'What does coaching in Düsseldorf cost, how does the first conversation work, how is it different from therapy — the most common questions, answered openly.'),
         'pt': ('Perguntas frequentes sobre coaching — Andreia da Costa',
-               'Quanto custa um coaching em Düsseldorf, como é a primeira conversa, em que difere da terapia, o que é o hnc — as perguntas mais comuns, respondidas às claras.'),
+               'Quanto custa um coaching em Düsseldorf, como é a primeira conversa, em que difere da terapia — as perguntas mais comuns, respondidas às claras.'),
     },
     'finanzcoaching': {
         'de': ('Finanzcoaching in Düsseldorf — Andreia da Costa',

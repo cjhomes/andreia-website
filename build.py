@@ -307,8 +307,8 @@ def daten_html(slug, code):
         '@id': 'https://' + DOMAIN + '/#andreia',
         'name': 'Andreia da Costa Jalali — Life & Business Coaching',
         'alternateName': 'Andreia da Costa Coaching',
-        'description': ('Life & Business Coaching, hnc (human neuro cybrainetics), '
-                        'Finanzcoaching und Retreats in Düsseldorf und online.'),
+        'description': ('Life & Business Coaching, Finanzcoaching und Retreats '
+                        'in Düsseldorf und online.'),
         'url': 'https://' + DOMAIN + '/',
         'image': 'https://' + DOMAIN + '/assets/hero.jpg',
         'email': k['email'],
@@ -326,9 +326,6 @@ def daten_html(slug, code):
             {'@type': 'Offer', 'itemOffered': {'@type': 'Service',
              'name': 'Life & Business Coaching',
              'description': 'Einzelcoaching in Düsseldorf oder online.'}},
-            {'@type': 'Offer', 'itemOffered': {'@type': 'Service',
-             'name': 'hnc — human neuro cybrainetics',
-             'description': 'Manuelle Arbeit am Nervensystem, vor Ort in Düsseldorf.'}},
             {'@type': 'Offer', 'itemOffered': {'@type': 'Service',
              'name': 'Finanzcoaching',
              'description': 'Überblick über die eigenen Finanzen. Keine Anlageberatung.'}},
@@ -445,7 +442,7 @@ def baue_sprache(code):
     t = spr.get('seiten', {}).get('index', {})
     page('index',
          t.get('titel', 'Life &amp; Business Coaching in Düsseldorf — Andreia da Costa'),
-         t.get('beschreibung', 'Life &amp; Business Coaching in Düsseldorf und online: Einzelcoaching, hnc, Finanzcoaching und Retreats. Erstgespräch kostenlos.'),
+         t.get('beschreibung', 'Life &amp; Business Coaching in Düsseldorf und online: Einzelcoaching, Finanzcoaching und Retreats. Erstgespräch kostenlos.'),
          MAIN, code, spr, ziel)
 
     for slug, (titel, beschreibung, inhalt) in PAGES.items():
